@@ -13,12 +13,12 @@ At then end of the interactive demonstration, users
 should be able to understand the three primary guiding
 forces behind boids: **seperation**, **alignment**, and **cohesion**, as well the variables and their effect on the three guiding forces.
 
-Technologies
+## Technologies
 * Javascript
 * React
 * lodash
 
-Custom Libaries
+### Custom Libaries
 * Euclidian Geometry
 * 2D Vector objects
 * 2D Physics

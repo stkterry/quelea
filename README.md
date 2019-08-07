@@ -1,4 +1,4 @@
-# Boids Simulation
+# Quelea | A Boids Simulation
 
 ## Overview
 A simulation of boidian behavior exhibited by flocking, swarming, herding, swimming, or flying animals

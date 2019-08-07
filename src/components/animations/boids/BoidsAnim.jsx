@@ -14,7 +14,6 @@ class BoidsAnim extends React.Component {
       boids: [],
       swarm: new Swarm()
     }
-    
     this.updateAnim = this.updateAnim.bind(this)
   }
 
@@ -38,8 +37,8 @@ class BoidsAnim extends React.Component {
     const { width, height } = this.getCanvasSize();
     let { boids, swarm } = this.state;
 
-    swarm.swarm(boids);
     this.rAF = requestAnimationFrame(this.updateAnim);
+    swarm.swarm(boids);
     swarm.wrap(width, height, boids);
 
     this.setState({ boids: boids });

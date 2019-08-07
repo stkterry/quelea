@@ -3,8 +3,8 @@ import { Vec } from "./vec";
 class Boid {
   constructor(pos, vel, acc, cell) {
     this.pos = new Vec(pos.x, pos.y);
-    this.vel = Vec.randFromMag(2, 4);
-    this.acc = new Vec();
+    this.vel = vel ? new Vec(vel.x, vel.y) : Vec.randFromMag(2, 3);
+    this.acc = acc ? new Vec(acc.x, acc.y) : new Vec();
   }
 
   static set attrs(attrs) {
@@ -67,7 +67,7 @@ class Boid {
       falloff = Boid.separationFalloff(this, boid);
       if (falloff > 0) {
         sepDiff = Vec.sub(this.pos, boid.pos);
-        seperationAvg.add(sepDiff.scale(falloff));
+        seperationAvg.add(sepDiff.div(falloff));
         separationAffectedBy += 1;
       }
     }
@@ -100,7 +100,7 @@ class Boid {
         .limit(Boid.maxSF);
     }
 
-    this.acc = alignmentAvg.add(cohesionAvg).add(seperationAvg);
+    return new Boid(this.pos, this.vel, alignmentAvg.add(cohesionAvg).add(seperationAvg))
   }
 
   update() {
@@ -110,13 +110,13 @@ class Boid {
 }
 
 Boid.attrs = {
-  alignmentR: 30,
-  cohesionR: 75,
+  alignmentR: 50,
+  cohesionR: 50,
   separationR: 50,
   maxAF: 0.2,
   maxCF: 0.2,
-  maxSF: 0.2,
-  maxSpeed: 4,
+  maxSF: 0.3,
+  maxSpeed: 3,
   maxAcc: 0.1,
   alignmentFalloff: (boid, otherBoid) => {
     const dist = boid.pos.distTo(otherBoid.pos);
@@ -130,7 +130,7 @@ Boid.attrs = {
   },
   separationFalloff: (boid, otherBoid) => {
     const dist = boid.pos.distTo(otherBoid.pos);
-    if (dist < Boid.separationR && dist > 0) return dist/Boid.separationR;
+    if (dist < Boid.separationR && dist > 0) return dist;
     else return 0;
   }
 }

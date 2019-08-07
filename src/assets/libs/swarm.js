@@ -6,10 +6,14 @@ class Swarm {
   }
 
   swarm(boids) {
-    for (let boid of boids) {
-      boid.acsFunc(boids);
-      boid.update();
+
+    let boidsNext = new Array(boids.length);
+
+    for (let i = 0, len = boids.length; i < len; i++) {
+      boidsNext[i] = boids[i].acsFunc(boids);
+      boidsNext[i].update();
     }
+    Object.assign(boids, boidsNext);
   }
 
   drawSwarm(ctx, boids) {

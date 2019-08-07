@@ -3,7 +3,7 @@ import React from "react";
 import BoidsCanvas from "./BoidsCanvas";
 import Boid from "../../../assets/libs/boid";
 import Swarm from "../../../assets/libs/swarm";
-import { Rand } from "../../../assets/libs/util";
+import { Rand, deepDup } from "../../../assets/libs/util";
 
 class BoidsAnim extends React.Component {
 
@@ -21,7 +21,7 @@ class BoidsAnim extends React.Component {
   componentDidMount() {
     const { width, height } = this.getCanvasSize();
     const boids = [];
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 100; i++) {
       boids.push(new Boid({x: Rand(0, width), y: Rand(0, height)}));
     }
     console.log(boids)

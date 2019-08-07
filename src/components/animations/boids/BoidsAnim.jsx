@@ -1,9 +1,7 @@
 import React from "react";
 
 import BoidsCanvas from "./BoidsCanvas";
-import Boid from "../../../assets/libs/boid";
 import Swarm from "../../../assets/libs/swarm";
-import { Rand, deepDup } from "../../../assets/libs/util";
 
 class BoidsAnim extends React.Component {
 
@@ -12,20 +10,20 @@ class BoidsAnim extends React.Component {
     this.state = {
       angle: 0,
       boids: [],
-      swarm: new Swarm()
+      swarm: new Swarm(),
+      gridWidth: 20
     }
-    
     this.updateAnim = this.updateAnim.bind(this)
   }
 
   componentDidMount() {
     const { width, height } = this.getCanvasSize();
-    const boids = [];
-    for (let i = 0; i < 100; i++) {
-      boids.push(new Boid({x: Rand(0, width), y: Rand(0, height)}));
-    }
-    console.log(boids)
-    this.setState({ boids: boids })
+    this.setState({
+      boids: this.state.swarm.newSwarm(500, width, height)
+    })
+
+    
+
     this.rAF = requestAnimationFrame(this.updateAnim);
   }
 
@@ -38,6 +36,7 @@ class BoidsAnim extends React.Component {
     const { width, height } = this.getCanvasSize();
     let { boids, swarm } = this.state;
 
+    // boids = swarm.swarm2();
     swarm.swarm(boids);
     this.rAF = requestAnimationFrame(this.updateAnim);
     swarm.wrap(width, height, boids);

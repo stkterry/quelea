@@ -35,7 +35,6 @@ class Boid {
   static get cohesionFalloff() { return this._cohesionFalloff }
   static get separationFalloff() { return this._separationFalloff }
   static get maxSpeed() { return this._maxSpeed }
-  
 
   acsFunc(boids) {
     let alignmentAvg = new Vec();
@@ -75,7 +74,6 @@ class Boid {
     // alignment
     if (alignmentAffectedBy > 0) {
       alignmentAvg
-        .div(alignmentAffectedBy)
         .setMag(Boid.maxSpeed)
         .sub(this.vel)
         .limit(Boid.maxAF)
@@ -94,7 +92,6 @@ class Boid {
     // separation
     if (separationAffectedBy > 0) {
       seperationAvg
-        .div(separationAffectedBy)
         .setMag(Boid.maxSpeed)
         .sub(this.vel)
         .limit(Boid.maxSF);

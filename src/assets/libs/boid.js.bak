@@ -10,14 +10,14 @@ class Boid {
   static set attrs(attrs) {
     const { 
       alignmentR, cohesionR, separationR, 
-      alignmentFalloff, cohesionFalloff, separationFalloff, 
+      falloff, cohesionFalloff, separationFalloff, 
       maxAF, maxCF, maxSF, 
       maxSpeed 
     } = attrs;
     this._perception = alignmentR; // radius of influence
     this._cohesionR = cohesionR; // radius of clumping?
     this._separationR = separationR; // radius of avoidance
-    this._alignmentFalloff = alignmentFalloff; // Falloff rate for alignment
+    this._falloff = falloff; // Falloff rate for alignment
     this._cohesionFalloff = cohesionFalloff; // Falloff rate for grouping together.
     this._separationFalloff = separationFalloff; // Falloff rate for avoidance;
     this._maxAF = maxAF; // Maximum sum force a boid can experience
@@ -31,76 +31,73 @@ class Boid {
   static get maxAF() { return this._maxAF }
   static get maxCF() { return this._maxCF }
   static get maxSF() { return this._maxSF }
-  static get alignmentFalloff() { return this._alignmentFalloff }
+  static get falloff() { return this._falloff }
   static get cohesionFalloff() { return this._cohesionFalloff }
   static get separationFalloff() { return this._separationFalloff }
   static get maxSpeed() { return this._maxSpeed }
-  
 
-  acsFunc(boids) {
-    let alignmentAvg = new Vec();
-    let cohesionAvg = new Vec();
-    let seperationAvg = new Vec();
-    let sepDiff = 0;
-    let falloff;
+  swarm(boids) {
+    let alignment = this.alignment(boids);
+    let cohesion = this.cohesion(boids);
+    let separation = this.separation(boids);
 
-    let alignmentAffectedBy = 0;
-    let cohesionAffectedBy = 0;
-    let separationAffectedBy = 0;
+    this.acc = alignment.add(cohesion).add(separation)
+  }
 
+  alignment(boids) {
+    let avg = new Vec();
+    let falloff = 0;
+    let affectedBy = 0;
     for (let boid of boids) {
-      // alignment
-      falloff = Boid.alignmentFalloff(this, boid);
-      if (falloff > 0) {
-        alignmentAvg.add(Vec.scale(boid.vel, falloff));
-        alignmentAffectedBy += 1;
+      falloff = Boid.falloff(this, boid);
+      if (falloff) {
+        avg.add(Vec.scale(boid.vel, falloff))
+        affectedBy += 1;
       }
+    }
+    if (affectedBy > 0) avg.div(affectedBy)
+      .setMag(Boid.maxSpeed)
+      .sub(this.vel)
+      .limit(Boid.maxAF);
+    return avg;
+  }
 
-      // cohesion
+  cohesion(boids) {
+    let avg = new Vec();
+    let falloff = 0;
+    let affectedBy = 0;
+    for (let boid of boids) {
       falloff = Boid.cohesionFalloff(this, boid);
-      if (falloff > 0) {
-        cohesionAvg.add(Vec.scale(boid.pos, falloff));
-        cohesionAffectedBy += 1;
+      if (falloff) {
+        avg.add(Vec.scale(boid.pos, falloff))
+        affectedBy += 1;
       }
+    }
+    if (affectedBy > 0) avg.div(affectedBy)
+    .sub(this.pos)
+    .setMag(Boid.maxSpeed)
+    .sub(this.vel)
+    .limit(Boid.maxCF);
+    return avg;
+  }
 
-      // separation
+  separation(boids) {
+    let avg = new Vec();
+    let falloff = 0;
+    let affectedBy = 0;
+    for (let boid of boids) {
       falloff = Boid.separationFalloff(this, boid);
-      if (falloff > 0) {
-        sepDiff = Vec.sub(this.pos, boid.pos);
-        seperationAvg.add(sepDiff.scale(falloff));
-        separationAffectedBy += 1;
+      if (falloff) {
+        let diff = Vec.sub(this.pos, boid.pos)
+        avg.add(diff.scale(falloff))
+        affectedBy += 1;
       }
     }
-
-    // alignment
-    if (alignmentAffectedBy > 0) {
-      alignmentAvg
-        .div(alignmentAffectedBy)
-        .setMag(Boid.maxSpeed)
-        .sub(this.vel)
-        .limit(Boid.maxAF)
-    }
-
-    // cohesion
-    if (cohesionAffectedBy > 0) {
-      cohesionAvg
-        .div(cohesionAffectedBy)
-        .sub(this.pos)
-        .setMag(Boid.maxSpeed)
-        .sub(this.vel)
-        .limit(Boid.maxCF)
-    }
-
-    // separation
-    if (separationAffectedBy > 0) {
-      seperationAvg
-        .div(separationAffectedBy)
-        .setMag(Boid.maxSpeed)
-        .sub(this.vel)
-        .limit(Boid.maxSF);
-    }
-
-    this.acc = alignmentAvg.add(cohesionAvg).add(seperationAvg);
+    if (affectedBy > 0) avg.div(affectedBy)
+      .setMag(Boid.maxSpeed)
+      .sub(this.vel)
+      .limit(Boid.maxSF);
+    return avg;
   }
 
   update() {
@@ -118,7 +115,7 @@ Boid.attrs = {
   maxSF: 0.2,
   maxSpeed: 4,
   maxAcc: 0.1,
-  alignmentFalloff: (boid, otherBoid) => {
+  falloff: (boid, otherBoid) => {
     const dist = boid.pos.distTo(otherBoid.pos);
     if (dist < Boid.alignmentR && dist > 0) return 1;
     else return 0;

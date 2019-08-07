@@ -80,7 +80,7 @@ class Vec {
   }
 
   static scale(vec, fac) {
-    return { x: vec.x * fac, y: vec.y * fac }
+    return new Vec(vec.x * fac, vec.y * fac)
   }
 
   static randUnit() {

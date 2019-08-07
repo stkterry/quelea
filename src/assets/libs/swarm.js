@@ -7,12 +7,8 @@ class Swarm {
 
   swarm(boids) {
     for (let boid of boids) {
-      boid.swarm(boids);
+      boid.acsFunc(boids);
       boid.update();
-      // // boid.swarm(boids);
-      // // boid.alignment(boids);
-      // boid.cohesion(boids);
-      // boid.update();
     }
   }
 
@@ -24,9 +20,10 @@ class Swarm {
 
   drawSwarmAdv(ctx, boids) {
     const pointer = document.getElementById("pointer");
+    let heading;
     for ( let boid of boids) {
-      const heading = boid.vel.getHeading();
       ctx.save();
+      heading = boid.vel.getHeading();
       ctx.translate(boid.pos.x, boid.pos.y);
       ctx.rotate( heading );
       ctx.drawImage(pointer, -10/2, -10/2, 10, 10);

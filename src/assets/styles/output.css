@@ -19,8 +19,10 @@ time, mark, audio, video, input {
   padding: 0;
   border: 0;
   font-size: 100%;
+  font: inherit;
   vertical-align: baseline;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Merriweather', serif;
+  font-size: 16px; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -49,8 +51,45 @@ button {
   border: none;
   outline: none; }
 
+html {
+  background: gray; }
+
 .hidden {
   display: none; }
+
+.tooltip {
+  position: relative; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 175px;
+  background-color: #1d1d1d;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  position: absolute;
+  z-index: 1; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  margin-left: -87.5px; }
+
+.btn-raise {
+  position: relative;
+  border-radius: 4px;
+  transition: all 200ms ease-out; }
+
+.btn-raise:hover {
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+  transform: scale(1.02, 1.02);
+  transform: translate(0, -2%);
+  text-shadow: 2px 8px 8px rgba(0, 0, 0, 0.5); }
 
 #boids-anim {
   display: flex;
@@ -72,5 +111,66 @@ button {
 #boids-pure {
   width: 800px;
   height: 500px; }
+
+#nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: whitesmoke;
+  height: 56px; }
+
+.nav-text-divider {
+  content: "";
+  margin: 0 8px;
+  height: 70%;
+  width: 2px;
+  background: black; }
+
+.nav-sitename {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%; }
+  .nav-sitename img {
+    margin: 0 0 0 16px;
+    height: 40px; }
+  .nav-sitename .nav-projectname {
+    font-weight: bold;
+    font-size: 22px;
+    color: #181818;
+    padding: 8px; }
+  .nav-sitename .nav-boidslink {
+    font-size: 22px;
+    color: #5e5e5e;
+    text-decoration: none;
+    padding: 8px; }
+  .nav-sitename .nav-boidslink:hover {
+    color: black;
+    background: lightblue;
+    border-radius: 4px; }
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%; }
+  .nav-links a {
+    margin: 0 8px;
+    color: black;
+    background: transparent; }
+  .nav-links a > i {
+    background: transparent;
+    font-size: 36px; }
+  .nav-links .nav-links-personal {
+    display: flex;
+    align-items: center;
+    text-decoration: none; }
+    .nav-links .nav-links-personal h3 {
+      margin: 8px; }
+  .nav-links .nav-links-personal:hover {
+    color: black;
+    background: lightblue;
+    border-radius: 4px; }
 
 /*# sourceMappingURL=output.css.map */

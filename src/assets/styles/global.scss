@@ -1,3 +1,49 @@
+html {
+	background:gray;
+  // background-image: url("../public/images/flock-2031140.svg");
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
+}
+
 .hidden {
   display: none;
+}
+
+
+.tooltip {
+  position: relative;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 175px;
+  background-color: rgb(29, 29, 29);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 14px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  width: 100%;
+  top: 100%;
+  left: 50%; 
+  margin-left: -87.5px;
+}
+
+.btn-raise {
+  position: relative;
+  border-radius: 4px;
+  transition: all 200ms ease-out;
+}
+.btn-raise:hover {
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+  transform: scale(1.02, 1.02);
+  transform: translate(0, -2%);
+  text-shadow: 2px 8px 8px rgba(0, 0, 0, 0.5);
 }

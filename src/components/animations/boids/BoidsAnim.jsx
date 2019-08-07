@@ -1,9 +1,7 @@
 import React from "react";
 
 import BoidsCanvas from "./BoidsCanvas";
-import Boid from "../../../assets/libs/boid";
 import Swarm from "../../../assets/libs/swarm";
-import { Rand } from "../../../assets/libs/util";
 
 class BoidsAnim extends React.Component {
 
@@ -11,7 +9,6 @@ class BoidsAnim extends React.Component {
     super(props);
     this.state = {
       angle: 0,
-      boids: [],
       swarm: new Swarm()
     }
     this.updateAnim = this.updateAnim.bind(this)
@@ -19,11 +16,8 @@ class BoidsAnim extends React.Component {
 
   componentDidMount() {
     const { width, height } = this.getCanvasSize();
-    const boids = [];
-    for (let i = 0; i < 100; i++) {
-      boids.push(new Boid({x: Rand(0, width), y: Rand(0, height)}));
-    }
-    this.setState({ boids: boids })
+    this.state.swarm.newSwarm(100, width, height);
+
     this.rAF = requestAnimationFrame(this.updateAnim);
   }
 
@@ -34,13 +28,13 @@ class BoidsAnim extends React.Component {
 
   updateAnim() {
     const { width, height } = this.getCanvasSize();
-    let { boids, swarm } = this.state;
+    let { swarm } = this.state;
 
     this.rAF = requestAnimationFrame(this.updateAnim);
-    swarm.swarm(boids);
-    swarm.wrap(width, height, boids);
+    swarm.swarm();
+    swarm.swarmWrap(width, height);
 
-    this.setState({ boids: boids });
+    this.setState({ swarm: swarm });
   }
 
   componentWillUnmount() {
@@ -52,7 +46,7 @@ class BoidsAnim extends React.Component {
       <div id="boids-anim">
         <div id="boids-anim-container">
           {/* <div className="check"></div> */}
-          <BoidsCanvas swarm={this.state.swarm} boids={this.state.boids} />
+          <BoidsCanvas swarm={this.state.swarm} />
         </div>
       </div>
     )

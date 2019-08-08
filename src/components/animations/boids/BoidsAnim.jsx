@@ -43,14 +43,10 @@ class BoidsAnim extends React.Component {
 
   render() {
     return (
-      <div id="boids-anim">
-        <div id="boids-anim-container">
-          {/* <div className="check"></div> */}
-          <BoidsCanvas swarm={this.state.swarm} />
-        </div>
-      </div>
+      <BoidsCanvas swarm={this.state.swarm} />
     )
   }
 }
 
 export default BoidsAnim;
+

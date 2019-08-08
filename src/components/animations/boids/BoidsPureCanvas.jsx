@@ -9,8 +9,8 @@ class BoidsPureCanvas extends React.Component {
   render() {
     return (
       <canvas id="boids-pure"
-        width="800"
-        height="500"
+        width="1000"
+        height="700"
         ref={node =>
           node ? this.props.ctxRef(node.getContext('2d')) : null
         }

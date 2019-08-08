@@ -4,7 +4,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: whitesmoke;
+  // background: whitesmoke;
+  
   height: 56px;
 
   // border-top: 1px solid #413075;
@@ -76,6 +77,11 @@
     }
 
   }
+  // #nav-links-one:hover {
+  //   color: rgba(243, 160, 43, 0.945);
+  //   transition: 100ms ease-in;
+  // }
+
   .nav-links-personal:hover {
     color: black;
     background: lightblue;

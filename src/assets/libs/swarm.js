@@ -53,8 +53,7 @@ class Swarm {
       boidsNext[i].update(this);
     }
 
-    let aaaa = Object.assign(this.boids, boidsNext);
-    // console.log(this.boids, aaaa)
+    Object.assign(this.boids, boidsNext);
   }
 
   swarmWrap(width, height) {

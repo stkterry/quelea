@@ -35,7 +35,6 @@ class Swarm {
 
     let newConfig = config || CONFIG();
     Object.assign(this, newConfig);
-    console.log(this);
   }
 
   newSwarm(size, width, height) {

@@ -104,8 +104,8 @@ html {
   transition: all 200ms ease-out;
 }
 .selector-text:active h3 {
-  // font-size: 16px;
-  // transform: scale(-1.2, -1.2);
+  font-size: 16px;
+  // transform: scale(1.05, 1.2);
   // transform: translate(0, 0);
   text-shadow: 0px 0px 4px #19B5B9;
   transition: all 200ms ease-in;

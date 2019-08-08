@@ -23,7 +23,7 @@
 }
 
 #boid-overlay {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
   right: 0;
@@ -32,6 +32,9 @@
   // background: rgba(218, 117, 117, 0.397);
   box-sizing: border-box;
   padding: 32px;
+}
+#boid-overlay:hover {
+  display: flex;
 }
 
 .boid-overlay-content {
@@ -70,11 +73,10 @@
     width: 16px;
     padding:0;
     margin-left: 6px;
-    // border-radius: 50%;
-    // padding: 2px;
-
   }
+
 }
+
 .boid-overlay-slider-val {
   margin-right: auto;
   font-size: 16px;
@@ -92,4 +94,12 @@
   font-size: 16px;
   text-align: right;
   margin: 0;
+}
+
+.boid-overlay-num {
+  background: none;
+  font-size: 16px;
+  font-weight: bold;
+  width: 40px;
+  text-align: center;
 }

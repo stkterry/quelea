@@ -1,7 +1,6 @@
 import React from "react";
 
 import BoidsPureCanvas from "./BoidsPureCanvas";
-import Boid from "../../../assets/libs/boid";
 
 class BoidsCanvas extends React.Component {
   constructor(props) {
@@ -22,9 +21,8 @@ class BoidsCanvas extends React.Component {
   }
 
   draw() {
-    this.ctx.fillStyle = "black"
+    this.ctx.fillStyle = "#051C24"
     this.ctx.fillRect(0, 0, this.width, this.height);
-    // this.props.swarm.drawSwarm(this.ctx, this.props.boids);
     this.props.swarm.drawSwarmAdv(this.ctx, this.props.boids);
   }
 

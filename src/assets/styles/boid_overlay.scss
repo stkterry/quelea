@@ -1,0 +1,135 @@
+
+
+
+.boid-overlay-btn {
+  
+  margin: 0;
+  padding: 0;
+  background: none;
+  
+  i {
+    margin: 0;
+    padding: 4px;
+    font-size: 32px;
+    border-radius: 8px;
+    // background: rgba(96, 224, 218, 0.384);
+    color: rgba(196, 195, 195, 0.267)
+  } 
+}
+.boid-overlay-btn:hover > i {
+  transition: 100ms ease-in;
+  color: rgb(52, 180, 169);
+}
+
+// #boid-overlay-principle-btn {
+  //   position: absolute;
+  //   right: 20px;
+  //   top: 24px;
+  // }
+  // #boid-overlay-swarm-btn {
+//   position: absolute;
+//   right: 40px;
+//   top: 24px;
+// }
+#overlayBtns {
+    z-index: 2000;
+  position: absolute;
+  right: 30px;
+  top: 0px;
+}
+
+.boid-overlay-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  // background: rgba(218, 117, 117, 0.397);
+  box-sizing: border-box;
+  padding: 40px 16px 16px 32px;
+}
+// .boid-overlay-page:hover {
+  //   display: flex;
+  // }
+  
+  .boid-overlay-content {
+    height: 100%;
+    width: 100%;
+    background: rgba(196, 195, 195, 0.356);
+    border-radius: 8px;
+    overflow-y: auto;
+  }
+  
+  .boid-overlay-perception-sliders {
+  margin: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #333333;
+  box-shadow: inset -8px -8px 16px rgba(93, 81, 114, 0.199);
+}
+.boid-overlay-slider {
+  margin-bottom: 20px;
+}
+
+.boid-overlay-text {
+  color: white;
+
+}
+
+.boid-overlay-slider-presentation {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    margin-left: 0;
+    width: 16px;
+    padding:0;
+    margin-left: 6px;
+  }
+
+}
+
+.boid-overlay-slider-val {
+  margin-right: auto;
+  font-size: 16px;
+}
+
+.boid-overlay-slider-heading-text {
+  // font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(92, 83, 83, 0.432);
+  margin-bottom: 16px;
+}
+.boid-overlay-slider-text {
+  font-size: 16px;
+  text-align: right;
+  margin: 0;
+}
+
+.boid-overlay-num {
+  background: none;
+  font-size: 16px;
+  font-weight: bold;
+  width: 40px;
+  text-align: center;
+}
+
+
+// radio selection
+#boid-icon-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // flex-direction: row;
+  // margin: 0 auto;
+
+  // &::after {
+  //   content: "";
+  //   flex: auto;
+  // }
+}

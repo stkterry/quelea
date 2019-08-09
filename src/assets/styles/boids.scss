@@ -1,32 +1,11 @@
-#boids-anim {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-#boids-anim-container {
-  position: relative;
-}
-// #boids-canvas {
-//   position: absolute;
-// }
-.check {
-  position: absolute;
-  background: transparent;
-  box-shadow: inset transparent 0 0 0 8px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
 
 
 // #boids-canvas {
-//   box-shadow: inset black 0 0 0 8px;
-//   z-index: 100;
-//   overflow:hidden;
+//   height: 100%;
+//   width: 100%;
 // }
 
 #boids-pure {
-  width: 800px;
-  height: 500px;
+  // width: 100%;
+  // height: 100%;
 }

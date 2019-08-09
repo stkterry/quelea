@@ -1,7 +1,6 @@
 import React from "react";
 
 import BoidsCanvas from "./BoidsCanvas";
-import Swarm from "../../../assets/libs/swarm";
 
 class BoidsAnim extends React.Component {
 
@@ -9,12 +8,11 @@ class BoidsAnim extends React.Component {
     super(props);
     this.state = { swarm: props.swarm }
     this.updateAnim = this.updateAnim.bind(this)
-    console.log(props.swarm)
   }
 
   componentDidMount() {
     const { width, height } = this.getCanvasSize();
-    this.state.swarm.newSwarm(100, width, height);
+    this.state.swarm.newSwarm(1000, width, height);
 
     this.rAF = requestAnimationFrame(this.updateAnim);
   }
@@ -29,7 +27,7 @@ class BoidsAnim extends React.Component {
     let { swarm } = this.state;
 
     this.rAF = requestAnimationFrame(this.updateAnim);
-    swarm.swarm();
+    swarm.swarm(width, height);
     swarm.swarmWrap(width, height);
 
     this.setState({ swarm: swarm });

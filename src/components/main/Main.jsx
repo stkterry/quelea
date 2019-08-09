@@ -10,8 +10,14 @@ import separation_icon from "../../assets/public/images/separation.svg";
 import velocity_icon from "../../assets/public/images/velocity.svg";
 import acceleration_icon from "../../assets/public/images/acceleration.svg";
 
-import rawFish from "../../assets/public/images/raw-fish.svg";
-import pointer from "../../assets/public/images/pointer-white.svg";
+import pointer from "../../assets/public/images/pointer-white.png";
+import rawFish from "../../assets/public/images/raw-fish.png";
+import fishy from "../../assets/public/images/fishy.png";
+import brownBird from "../../assets/public/images/brown-bird.png";
+import blueBird from "../../assets/public/images/blue-bird.png";
+import wutBee from "../../assets/public/images/wut-bee.png";
+import langton from "../../assets/public/images/langton.png";
+import cawBird from "../../assets/public/images/caw-bird.png";
 
 const showNone = {
   showPrinciple: false,
@@ -39,19 +45,23 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.boidIcons = {
-      default: document.getElementById("pointer"),
-      rawFish: document.getElementById("raw-fish")
+      pointer: document.getElementById("pointer"),
+      rawFish: document.getElementById("raw-fish"),
+      fishy: document.getElementById("fishy"),
+      brownBird: document.getElementById("brownBird"),
+      blueBird: document.getElementById("blueBird"),
+      wutBee: document.getElementById("wutBee"),
+      langton: document.getElementById("langton"),
+      cawBird: document.getElementById("caw-bird"),
     }
     this.setState({
       swarm: Object.assign(
         this.state.swarm,
-        { boidIcon: this.boidIcons.default }
+        { boidIcon: this.boidIcons.pointer }
       )
     })
   }
   handleOverlayIcon(event) {
-    event.preventDefault();
-    console.log(event.target.value)
     this.setState({
       swarm: Object.assign(
         this.state.swarm,
@@ -123,7 +133,7 @@ class Main extends React.Component {
         className="boid-overlay-btn"
         onMouseEnter={event => this.showOverlay(event, "showPrinciple")}
       >
-        <i className="fas fa-cogs" />
+        <i className="fas fa-sliders-h" />
       </button>
     )
   }
@@ -134,7 +144,7 @@ class Main extends React.Component {
         className="boid-overlay-btn"
         onMouseEnter={event => this.showOverlay(event, "showSwarm")}
       >
-        <i className="fas fa-cogs" />
+        <i className="fas fa-chart-area"></i>
       </button>
     )
   }
@@ -316,24 +326,24 @@ class Main extends React.Component {
   }
   renderSwarm() {
 
-    let { size,
+    let { size, boidIconSize
     } = this.state.swarm;
     return (
       <div id="boid-swarm-overlay" className="boid-overlay-page" onMouseLeave={this.hideOverlay}>
         <div className="boid-overlay-content">
 
           <div className="boid-overlay-perception-sliders">
-            <h3 className="boid-overlay-slider-heading-text boid-overlay-text">Boid Population</h3>
+            <h3 className="boid-overlay-slider-heading-text boid-overlay-text">Swarm</h3>
 
             <div className="boid-overlay-slider selector-text">
               <div className="boid-overlay-slider-presentation">
                 <input onChange={event => this.handleOverlayIcon(event, "size")}
                   type="number" min="0" max="100" step="1"
-                  value={this.state.swarm.size}
+                  value={size}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="swarm-sizeNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Swarm Size</h3>
-                <img src={alignment_icon} alt = "alignment radius" />
+                <h3 className="boid-overlay-slider-text boid-overlay-text">Population</h3>
+                <img src={alignment_icon} alt = "swarm population size" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "size")}
                 type="range" min="1" max="100" step="1"
@@ -342,46 +352,64 @@ class Main extends React.Component {
               />
             </div>
 
+            <div className="boid-overlay-slider selector-text">
+              <div className="boid-overlay-slider-presentation">
+                <input onChange={event => this.handleOverlayIcon(event, "boidIconSize")}
+                  type="number" min="0" max="100" step="1"
+                  value={boidIconSize}
+                  className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="swarm-IconSize"
+                />
+                <h3 className="boid-overlay-slider-text boid-overlay-text">Physical Size</h3>
+                <img src={alignment_icon} alt="boid icon size" />
+              </div>
+              <input onChange={event => this.handleOverlaySlider(event, "boidIconSize")}
+                type="range" min="4" max="24" step="1"
+                value={boidIconSize}
+                className="sliderDef" id="swarm-size"
+              />
+            </div>
+
           </div>
 
           {
             this.boidIcons ? (
+
+
               <div className="boid-overlay-perception-sliders">
                 <h3 className="boid-overlay-slider-heading-text boid-overlay-text">Boid Icons</h3>
 
                 <div id="boid-icon-box" onChange={this.handleOverlayIcon}>
                   <label className="boid-icon-container">Pointer
-                <input type="radio" defaultChecked="checked" name="boid-overlay-icon-select" value={"default"}
-                    />
-                    <img className="boid-icon-selection icon-raise" src={pointer} alt="boid icon pointer (default)" />
+                <input type="radio" name="boid-overlay-icon-select" value={"pointer"} />
+                    <img className="boid-icon-selection icon-raise" src={pointer} alt="boid icon pointer (pointer)" />
                   </label>
                   <label className="boid-icon-container">Raw Fish
                 <input type="radio" name="boid-overlay-icon-select" value={"rawFish"} />
                     <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="three" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Fishy
+                <input type="radio" name="boid-overlay-icon-select" value={"fishy"} />
+                    <img className="boid-icon-selection icon-raise" src={fishy} alt="boid icon fishy" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="four" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Caw! Caw!
+                <input type="radio" name="boid-overlay-icon-select" value={"cawBird"} />
+                    <img className="boid-icon-selection icon-raise" src={cawBird} alt="boid icon caw-bird" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="five" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Blue Bird
+                <input type="radio" name="boid-overlay-icon-select" value={"blueBird"} />
+                    <img className="boid-icon-selection icon-raise" src={blueBird} alt="boid icon blue bird" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="six" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Brownie
+                <input type="radio" name="boid-overlay-icon-select" value={"brownBird"} />
+                    <img className="boid-icon-selection icon-raise" src={brownBird} alt="boid icon brown-bird" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="seven" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Langton
+                <input type="radio" name="boid-overlay-icon-select" value={"langton"} />
+                    <img className="boid-icon-selection icon-raise" src={langton} alt="boid icon langton" />
                   </label>
-                  <label className="boid-icon-container">Raw Fish
-                <input type="radio" name="boid-overlay-icon-select" value="eight" />
-                    <img className="boid-icon-selection icon-raise" src={rawFish} alt="boid icon raw-fish" />
+                  <label className="boid-icon-container">Wut Bee
+                <input type="radio" name="boid-overlay-icon-select" value={"wutBee"} />
+                    <img className="boid-icon-selection icon-raise" src={wutBee} alt="boid icon wut-bee" />
                   </label>
                 </div>
 

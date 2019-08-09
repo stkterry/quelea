@@ -13,7 +13,8 @@ const CONFIG = () => {
     maxAcc: 0.1,
     size: 0,
     boidIcon: null,
-    
+    boidIconSize: 10,
+    drawVectors: false,
     alignmentFalloff: function(boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
       if (dist < this.alignmentR && dist > 0) return 1;
@@ -82,18 +83,45 @@ class Swarm {
 
   drawSwarmAdv(ctx) {
     let heading;
-    for ( let boid of this.activeBoids()) {
-      ctx.save();
-      heading = boid.vel.getHeading();
-      ctx.translate(boid.pos.x, boid.pos.y);
-      ctx.rotate( heading );
-      ctx.drawImage(this.boidIcon, -10/2, -10/2, 10, 10);
-      ctx.rotate(-heading);
-      ctx.translate(-boid.pos.x, -boid.pos.y);
-      ctx.restore();
+    if (this.drawVectors) {
+      for (let boid of this.activeBoids()) {
+        ctx.save();
+        heading = boid.vel.getHeading();
+        ctx.translate(boid.pos.x, boid.pos.y);
+        ctx.rotate(heading);
+        ctx.drawImage(
+          this.boidIcon,
+          -this.boidIconSize / 2, -this.boidIconSize / 2,
+          this.boidIconSize, this.boidIconSize
+        );
+        ctx.rotate(-heading);
+        ctx.translate(-boid.pos.x, -boid.pos.y);
+
+        // draw vectors now
+        ctx.strokeStyle = "green";
+        ctx.beginPath();
+        ctx.moveTo(boid.pos.x, boid.pos.y);
+        ctx.lineTo(boid.pos.x + boid.acc.x*100, boid.pos.y + boid.acc.y*100);
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
+      }
+    } else {
+      for ( let boid of this.activeBoids()) {
+        ctx.save();
+        heading = boid.vel.getHeading();
+        ctx.translate(boid.pos.x, boid.pos.y);
+        ctx.rotate( heading );
+        ctx.drawImage(
+          this.boidIcon, 
+          -this.boidIconSize/2, -this.boidIconSize/2, 
+          this.boidIconSize, this.boidIconSize
+        );
+        ctx.rotate(-heading);
+        ctx.translate(-boid.pos.x, -boid.pos.y);
+        ctx.restore();
+      }
     }
   }
-
-
 }
 export default Swarm;

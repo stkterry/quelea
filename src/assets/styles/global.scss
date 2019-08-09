@@ -110,3 +110,59 @@ html {
   text-shadow: 0px 0px 4px #19B5B9;
   transition: all 200ms ease-in;
 }
+
+
+// radio styling
+.icon-raise {
+  position: relative;
+  border-radius: 4px;
+  transition: all 200ms ease-out;
+}
+.icon-raise:hover {
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+  transform: scale(1.02, 1.02);
+  transform: translate(0, -4%);
+  filter: drop-shadow(2px 8px 8px rgb(11, 90, 180));
+}
+
+
+
+.boid-icon-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  cursor: pointer;
+  font-size: 14px;
+  color: whitesmoke;
+  background: rgb(74, 78, 77);
+  margin: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.boid-icon-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.boid-icon-selection {
+  margin-top: 4px;
+  padding: 2px;
+  width: 68px;
+}
+.boid-icon-container:hover {
+  box-shadow: inset 0 0 8px 2px rgb(11, 90, 180);
+}
+// .boid-icon-container:hover input ~ .boid-icon-selection {
+// }
+.boid-icon-container input:checked ~ .boid-icon-selection {
+  transform: scale(1.02, 1.02);
+  transform: translate(0, -4%);
+  box-shadow: inset 0 0 8px 2px rgba(11, 180, 11, 0.918);
+  filter: drop-shadow(2px 8px 8px rgba(11, 180, 11, 0.918));
+}

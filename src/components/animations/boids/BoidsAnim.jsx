@@ -9,6 +9,7 @@ class BoidsAnim extends React.Component {
     super(props);
     this.state = { swarm: props.swarm }
     this.updateAnim = this.updateAnim.bind(this)
+    console.log(props.swarm)
   }
 
   componentDidMount() {

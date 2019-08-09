@@ -1,9 +1,6 @@
 
-#boid-overlay-btn {
-  position: absolute;
-  z-index: 2000;
-  right: 20px;
-  top: 24px;
+.boid-overlay-btn {
+
   margin: 0;
   padding: 0;
   background: none;
@@ -15,15 +12,33 @@
     border-radius: 8px;
     // background: rgba(96, 224, 218, 0.384);
     color: rgba(196, 195, 195, 0.267)
-  }
+  } 
 }
-#boid-overlay-btn:hover > i {
-  transition: 200ms ease-in;
+.boid-overlay-btn:hover > i {
+  transition: 100ms ease-in;
   color: rgb(52, 180, 169);
 }
 
-#boid-overlay {
-  display: none;
+// #boid-overlay-principle-btn {
+//   position: absolute;
+//   right: 20px;
+//   top: 24px;
+// }
+// #boid-overlay-swarm-btn {
+//   position: absolute;
+//   right: 40px;
+//   top: 24px;
+// }
+#overlayBtns {
+    z-index: 2000;
+  position: absolute;
+  right: 30px;
+  top: 0px;
+}
+
+
+.boid-overlay-page {
+  display: flex;
   flex-direction: column;
   position: absolute;
   right: 0;
@@ -33,7 +48,7 @@
   box-sizing: border-box;
   padding: 32px;
 }
-#boid-overlay:hover {
+.boid-overlay-page:hover {
   display: flex;
 }
 
@@ -102,4 +117,19 @@
   font-weight: bold;
   width: 40px;
   text-align: center;
+}
+
+
+// radio selection
+#boid-icon-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // flex-direction: row;
+  // margin: 0 auto;
+
+  // &::after {
+  //   content: "";
+  //   flex: auto;
+  // }
 }

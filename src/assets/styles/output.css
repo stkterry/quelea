@@ -403,4 +403,41 @@ body {
   flex-wrap: wrap;
   justify-content: center; }
 
+#main-discussion {
+  display: flex;
+  flex-direction: column;
+  margin: 80px auto;
+  width: 1000px; }
+
+.paragraph-heading {
+  z-index: 2;
+  color: white;
+  font-size: 36px;
+  margin-left: 16px;
+  margin-bottom: -6px; }
+
+.paragraph-group {
+  width: 100%;
+  height: 100%;
+  background: #2c263f;
+  border-radius: 16px;
+  margin-bottom: 24px; }
+
+.paragraph {
+  color: black;
+  background: #b0a8c7;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 8px;
+  line-height: 1.4; }
+  .paragraph h1 {
+    font-size: 36px; }
+  .paragraph p {
+    padding-left: 1.5em;
+    text-indent: -1.5em; }
+    .paragraph p span {
+      font-style: italic; }
+  .paragraph span {
+    font-style: italic; }
+
 /*# sourceMappingURL=output.css.map */

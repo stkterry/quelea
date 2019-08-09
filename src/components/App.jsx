@@ -2,6 +2,7 @@ import React from 'react';
 // import BoidsAnim from "./animations/boids/BoidsAnim";
 import Nav from "./nav/Nav";
 import Main from "./main/Main";
+import Discuss from "./main/Discuss";
 
 const pointer = require("../assets/public/images/pointer-white.png");
 const rawFish = require("../assets/public/images/raw-fish.png");
@@ -23,9 +24,10 @@ const App = () => {
       <img src={wutBee} alt="rawFishBoid" id="wutBee" className="hidden" />
       <img src={langton} alt="rawFishBoid" id="langton" className="hidden" />
       <img src={cawBird} alt="rawFishBoid" id="caw-bird" className="hidden" />
+
       <Nav />
-      {/* <BoidsAnim /> */}
       <Main />
+      <Discuss />
     </div>
   );
 }

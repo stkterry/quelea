@@ -1,4 +1,6 @@
 # Quelea | A Boids Simulation
+![Quelea Banner](./readme_imgs/banner.png)
+<p align="center"><img src="./readme_imgs/c2.png" alt="Base" width="400"></p>
 
 ## Overview
 A simulation of boidian behavior exhibited by flocking, swarming, herding, swimming, or flying animals
@@ -16,10 +18,10 @@ forces behind boids: **seperation**, **alignment**, and **cohesion**, as well th
 ## Technologies
 * Javascript
 * React
-* lodash
+* HTML5 Canvas
 
-### Custom Libaries
+### Purpose Built Libraries
 * Euclidian Geometry
 * 2D Vector objects
 * 2D Physics
-* Grid and/or Quadtree Implementation for performance
+* Quadtree Algorithm

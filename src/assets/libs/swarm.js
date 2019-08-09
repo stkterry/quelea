@@ -1,6 +1,10 @@
 import { Rand } from "./util";
 import Boid from "./boid";
 
+import QuadTree from "../libs/quadtree/quadtree";
+import Rect from "../libs/quadtree/quad_rect";
+import Point from "../libs/quadtree/quad_point";
+
 const CONFIG = () => {
   return {
     alignmentR: 50,
@@ -50,15 +54,29 @@ class Swarm {
     return this.boids;
   }
 
-  swarm() {
+
+  swarm(width, height) {
     let boidsNext = new Array(this.size);
+
+    let max = Math.max(this.alignmentR, this.cohesionR, this.separationR);
+    let field = new Rect(width / 2, height / 2, width/2, height/2);
+    let qt = new QuadTree(field, 4);
+    for (let boid of this.activeBoids()) {
+      qt.insert(new Point(boid.pos.x, boid.pos.y, boid))
+    }
+    // console.log(qt);
+
     for (let i = 0, len = this.size; i < len; i++) {
-      boidsNext[i] = this.boids[i].acsFunc(this, this.boids);
+      let search = new Rect(this.boids[i].pos.x, this.boids[i].pos.y, max, max);
+      let result = qt.query(search);
+
+      boidsNext[i] = this.boids[i].acsFunc(this, result);
       boidsNext[i].update(this);
     }
 
     Object.assign(this.boids, boidsNext);
   }
+
 
   swarmWrap(width, height) {
     const offset = this.offset;

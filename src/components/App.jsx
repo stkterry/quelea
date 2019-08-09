@@ -3,6 +3,8 @@ import React from 'react';
 import Nav from "./nav/Nav";
 import Main from "./main/Main";
 
+// import "../assets/libs/quadtree/test";
+
 const pointer = require("../assets/public/images/pointer-white.png");
 const rawFish = require("../assets/public/images/raw-fish.png");
 const fishy = require("../assets/public/images/fishy.png");
@@ -24,7 +26,6 @@ const App = () => {
       <img src={langton} alt="rawFishBoid" id="langton" className="hidden" />
       <img src={cawBird} alt="rawFishBoid" id="caw-bird" className="hidden" />
       <Nav />
-      {/* <BoidsAnim /> */}
       <Main />
     </div>
   );

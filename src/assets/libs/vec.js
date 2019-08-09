@@ -118,8 +118,4 @@ class Vec {
 
 }
 
-// module.exports = {
-//   Vec: Vec
-// };
-
 export default Vec;

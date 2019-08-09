@@ -24,7 +24,6 @@
   "homepage": "https://github.com/stkterry/boids#readme",
   "private": true,
   "dependencies": {
-    "paper": "^0.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-resize-aware": "^3.0.0-beta.3",
@@ -33,6 +32,7 @@
     "react-scripts": "^3.0.1"
   },
   "scripts": {
+    "qtest": "node ./src/assets/libs/quadtree/test.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -56,6 +56,11 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-es2105": "0.0.0",
     "concurrently": "^4.1.1",
     "node-sass": "^4.12.0"
   }

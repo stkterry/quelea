@@ -2,6 +2,7 @@ import React from "react"
 
 import BoidsAnim from "../animations/boids/BoidsAnim";
 import OverlayInfo from "./overlay_info";
+import OverlayHighlight from "./overlay_highlight";
 
 import Swarm from "../../assets/libs/swarm";
 
@@ -23,7 +24,8 @@ import cawBird from "../../assets/public/images/caw-bird.png";
 const showNone = {
   showPrinciple: false,
   showSwarm: false,
-  showAbout: false
+  showAbout: false,
+  showOverlayHighlight: ""
 };
 
 
@@ -37,11 +39,14 @@ class Main extends React.Component {
       showPrinciple: false,
       showSwarm: false,
       showAbout: false,
-      boidIcons: {}
+      boidIcons: {},
+      showOverlayHighlight: ""
     }
 
     this.handleOverlaySlider = this.handleOverlaySlider.bind(this);
     this.handleOverlayIcon = this.handleOverlayIcon.bind(this);
+    this.showOverlayHighlight = this.showOverlayHighlight.bind(this);
+    this.hideOverlayHighlight = this.hideOverlayHighlight.bind(this);
     this.showOverlay = this.showOverlay.bind(this);
     this.hideOverlay = this.hideOverlay.bind(this);
   }
@@ -93,6 +98,19 @@ class Main extends React.Component {
     //   swarm[which] = event.target.value;
     //   return { swarm };
     // })
+  }
+
+  showOverlayHighlight(event, which) {
+    event.preventDefault();
+    this.setState({
+      showOverlayHighlight: which
+    })
+  }
+  hideOverlayHighlight(event) {
+    event.preventDefault();
+    this.setState({
+      showOverlayHighlight: ""
+    })
   }
 
   showOverlay(event, which) {
@@ -174,7 +192,7 @@ class Main extends React.Component {
         className="boid-overlay-btn"
         onMouseEnter={event => this.showOverlay(event, "showAbout")}
       >
-        <i class="far fa-question-circle"></i>
+        <i className="far fa-question-circle"></i>
       </button>
     ) 
   }
@@ -200,7 +218,11 @@ class Main extends React.Component {
                   value={alignmentR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="alignmentRNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Alignment</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-alignment-radius")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                  >Alignment
+                </h3>
                 <img src={alignment_icon} alt="alignment radius" />
             </div>
               <input onChange={event => this.handleOverlaySlider(event, "alignmentR")} 
@@ -217,7 +239,11 @@ class Main extends React.Component {
                   value={cohesionR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="cohesionRNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Cohesion</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-cohesion-radius")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                  >Cohesion
+                </h3>
                 <img src={cohesion_icon} alt="cohesion radius" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "cohesionR")} 
@@ -234,7 +260,11 @@ class Main extends React.Component {
                   value={separationR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="separationRNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Separation</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-separation-radius")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                  >Separation
+                </h3>
                 <img src={separation_icon} alt="separation radius" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "separationR")}  
@@ -256,7 +286,10 @@ class Main extends React.Component {
                   value={maxAF}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="maxAFNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Alignment</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-alignment-force")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Alignment</h3>
                 <img src={alignment_icon} alt="max alignment force" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "maxAF")} 
@@ -273,7 +306,10 @@ class Main extends React.Component {
                   value={maxCF}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="maxCFNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Cohesion</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-cohesion-force")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Cohesion</h3>
                 <img src={cohesion_icon} alt="max cohesion force" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "maxCF")}
@@ -290,7 +326,10 @@ class Main extends React.Component {
                   value={maxSF}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="maxSFNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Separation</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-separation-force")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Separation</h3>
                 <img src={separation_icon} alt="max separation force" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "maxSF")}
@@ -312,7 +351,10 @@ class Main extends React.Component {
                   value={maxSpeed}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="maxSpeedNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Maximum Velocity</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-maximum-velocity")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Maximum Velocity</h3>
                 <img src={velocity_icon} alt="max velocity" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "maxSpeed")}
@@ -329,7 +371,10 @@ class Main extends React.Component {
                   value={maxAcc}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="maxAccNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Maximum Acceleration</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-maximum-acceleration")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Maximum Acceleration</h3>
                 <img src={acceleration_icon} alt="maximum acceleration" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "maxAcc")}
@@ -363,7 +408,10 @@ class Main extends React.Component {
                   value={size}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="swarm-sizeNum"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Population</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-population-size")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Population</h3>
                 <img src={alignment_icon} alt = "swarm population size" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "size")}
@@ -380,7 +428,10 @@ class Main extends React.Component {
                   value={boidIconSize}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="swarm-IconSize"
                 />
-                <h3 className="boid-overlay-slider-text boid-overlay-text">Physical Size</h3>
+                <h3 className="boid-overlay-slider-text boid-overlay-text"
+                  onMouseEnter={event => this.showOverlayHighlight(event, "info-boid-icon-size")}
+                  onMouseLeave={this.hideOverlayHighlight}
+                >Physical Size</h3>
                 <img src={alignment_icon} alt="boid icon size" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "boidIconSize")}
@@ -394,8 +445,6 @@ class Main extends React.Component {
 
           {
             this.boidIcons ? (
-
-
               <div className="boid-overlay-perception-sliders">
                 <h3 className="boid-overlay-slider-heading-text boid-overlay-text">Boid Icons</h3>
 
@@ -445,12 +494,12 @@ class Main extends React.Component {
   // ----------------------------
 
   render() {
-    // console.log('here')
     return (
       <div id="main">
         <div id="main-boids-anim">
 
           {this.overlayDis()}
+          <OverlayHighlight infoSelection={this.state.showOverlayHighlight} />
 
           <div className="main-edge-container">
             <div className="main-cover"></div>

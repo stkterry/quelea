@@ -7,7 +7,7 @@ class OverlayInfo extends React.Component {
 
   render() {
     return (
-      <div onMouseLeave={this.props.hideOverlay} id="overlay-info-main" className="overlay-info-page">
+      <div onMouseLeave={this.props.hideOverlay} id="overlay-info-main" className="overlay-info-about">
         <div className="boid-overlay-content">
           <div className="boid-overlay-perception-sliders">
             <h3 className="boid-overlay-slider-heading-text boid-overlay-text">

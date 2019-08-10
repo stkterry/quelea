@@ -402,6 +402,7 @@ body {
   margin-bottom: 16px; }
 
 .boid-overlay-slider-text {
+  cursor: pointer;
   font-size: 16px;
   text-align: right;
   margin: 0; }
@@ -418,7 +419,7 @@ body {
   flex-wrap: wrap;
   justify-content: center; }
 
-.overlay-info-page {
+.overlay-info-about {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -430,6 +431,15 @@ body {
 
 #info-overlay-about {
   margin-right: auto; }
+
+.overlay-info-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 40px 16px 16px 16px; }
 
 #main-discussion {
   display: flex;

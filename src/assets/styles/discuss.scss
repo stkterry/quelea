@@ -1,0 +1,59 @@
+
+
+#main-discussion {
+  display: flex;
+  flex-direction: column;
+  margin: 80px auto;
+
+  width: 1000px;
+}
+
+.paragraph-heading {
+  z-index: 2;
+  color: white;
+  font-size: 36px;
+  margin-left: 16px;
+  margin-bottom: -6px;
+}
+
+.paragraph-group {
+  width: 100%;
+  height: 100%;
+  background: rgb(44, 38, 63);
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.paragraph {
+  color: whitesmoke;
+  text-align: left;
+   font-size: 15px;
+  // background: rgb(176, 168, 199);
+  // border-radius: 16px;
+  // padding: 16px;
+  // margin: 12px 8px;
+  line-height: 1.4;
+  h1 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #19B5B9;
+  }
+
+  p {
+    padding-left: 1.5em; 
+    text-indent: -1.5em;
+
+    span {
+      font-style: italic;
+    }
+  }
+
+  span {
+    font-style: italic;
+  }
+
+}

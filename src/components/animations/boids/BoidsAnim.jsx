@@ -12,7 +12,10 @@ class BoidsAnim extends React.Component {
 
   componentDidMount() {
     const { width, height } = this.getCanvasSize();
-    this.state.swarm.newSwarm(1000, width, height);
+    this.state.swarm.newSwarm(1500, width, height);
+    this.setState({
+      swarm: Object.assign(this.state.swarm, {size: 500})
+    })
 
     this.rAF = requestAnimationFrame(this.updateAnim);
   }

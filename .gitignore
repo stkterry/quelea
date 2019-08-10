@@ -9,7 +9,8 @@ src/assets/styles/output.css.map
 
 # testing
 /coverage
-
+src/assets/libs/quadtree/test.js
+src/components/anim.bak
 # production
 /build
 
@@ -25,5 +26,3 @@ notes
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/src/assets/libs/quadtree/test.js;

@@ -37,7 +37,7 @@ class Boid {
       falloff = swarm.separationFalloff(this, boid);
       if (falloff > 0) {
         sepDiff = Vec.sub(this.pos, boid.pos);
-        seperationAvg.add(sepDiff.div(falloff));
+        seperationAvg.add(sepDiff.scale(falloff));
         separationAffectedBy += 1;
       }
     }

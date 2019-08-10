@@ -3,6 +3,8 @@ import React from 'react';
 import Nav from "./nav/Nav";
 import Main from "./main/Main";
 
+import Falloff from "./falloff/falloff";
+
 // import "../assets/libs/quadtree/test";
 
 const pointer = require("../assets/public/images/pointer-white.png");
@@ -27,6 +29,7 @@ const App = () => {
       <img src={cawBird} alt="rawFishBoid" id="caw-bird" className="hidden" />
       <Nav />
       <Main />
+      {/* <Falloff /> */}
     </div>
   );
 }

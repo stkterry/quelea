@@ -5,6 +5,8 @@ import QuadTree from "../libs/quadtree/quadtree";
 import Rect from "../libs/quadtree/quad_rect";
 import Point from "../libs/quadtree/quad_point";
 
+import falloffs from "../libs/falloff_funcs";
+
 const CONFIG = () => {
   return {
     alignmentR: 50,
@@ -21,8 +23,7 @@ const CONFIG = () => {
     drawVectors: false,
     alignmentFalloff: function(boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
-      if (dist < this.alignmentR && dist > 0) return 1;
-      else return 0;
+      return falloffs.expImpulse(dist, this.alignmentR)
     },
     cohesionFalloff: function(boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
@@ -31,7 +32,7 @@ const CONFIG = () => {
     },
     separationFalloff: function(boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
-      if (dist < this.separationR && dist > 0) return dist;
+      if (dist < this.separationR && dist > 0) return 1/dist;
       else return 0;
     }
   }
@@ -64,7 +65,6 @@ class Swarm {
     for (let boid of this.activeBoids()) {
       qt.insert(new Point(boid.pos.x, boid.pos.y, boid))
     }
-    // console.log(qt);
 
     for (let i = 0, len = this.size; i < len; i++) {
       let search = new Rect(this.boids[i].pos.x, this.boids[i].pos.y, max, max);

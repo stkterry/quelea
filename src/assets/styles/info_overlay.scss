@@ -1,0 +1,16 @@
+.overlay-info-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+  left: 0;
+  width: 50%;
+  height: 100%;
+  // background: rgba(190, 190, 190, 0.397);
+  box-sizing: border-box;
+  padding: 40px 16px 16px 16px;
+}
+
+#info-overlay-about {
+  margin-right: auto;
+}

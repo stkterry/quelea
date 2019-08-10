@@ -1,8 +1,9 @@
 import React from "react"
 
 import BoidsAnim from "../animations/boids/BoidsAnim";
-import Swarm from "../../assets/libs/swarm";
+import OverlayInfo from "./overlay_info";
 
+import Swarm from "../../assets/libs/swarm";
 
 import alignment_icon from "../../assets/public/images/alignment.svg";
 import cohesion_icon from "../../assets/public/images/cohesion.svg";
@@ -21,7 +22,8 @@ import cawBird from "../../assets/public/images/caw-bird.png";
 
 const showNone = {
   showPrinciple: false,
-  showSwarm: false
+  showSwarm: false,
+  showAbout: false
 };
 
 
@@ -34,6 +36,7 @@ class Main extends React.Component {
       swarm: new Swarm(),
       showPrinciple: false,
       showSwarm: false,
+      showAbout: false,
       boidIcons: {}
     }
 
@@ -108,6 +111,7 @@ class Main extends React.Component {
   overlayDis() {
     return (<>
       <nav id="overlayBtns">
+        {this.aboutBtn()}
         {this.principleBtn()}
         {this.falloffBtn()}
         {this.swarmBtn()}
@@ -123,7 +127,11 @@ class Main extends React.Component {
         ) : null
       }
 
-      {/* {this.renderSwarm()} */}
+      {
+        this.state.showAbout ? (
+          <OverlayInfo hideOverlay={this.hideOverlay}/>
+        ) : null
+      }
     </>)
   }
   principleBtn() {
@@ -159,6 +167,19 @@ class Main extends React.Component {
       </button>
     )
   }
+  aboutBtn() {
+    return (
+      <button
+        id="info-overlay-about"
+        className="boid-overlay-btn"
+        onMouseEnter={event => this.showOverlay(event, "showAbout")}
+      >
+        <i class="far fa-question-circle"></i>
+      </button>
+    ) 
+  }
+
+
   renderPrinciple() {
 
     let { alignmentR, cohesionR, separationR, 
@@ -175,7 +196,7 @@ class Main extends React.Component {
             <div className="boid-overlay-slider selector-text">
             <div className="boid-overlay-slider-presentation">
                 <input onChange={event => this.handleOverlaySlider(event, "alignmentR")}
-                  type="number" min="0" max="250"
+                  type="number" min="0" max="150"
                   value={alignmentR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="alignmentRNum"
                 />
@@ -183,7 +204,7 @@ class Main extends React.Component {
                 <img src={alignment_icon} alt="alignment radius" />
             </div>
               <input onChange={event => this.handleOverlaySlider(event, "alignmentR")} 
-                type="range" min="0" max="250" 
+                type="range" min="0" max="150" 
                 value={alignmentR} 
                 className="sliderDef" id="alignmentR" 
               />
@@ -192,7 +213,7 @@ class Main extends React.Component {
             <div className="boid-overlay-slider selector-text">
               <div className="boid-overlay-slider-presentation">
                 <input onChange={event => this.handleOverlaySlider(event, "cohesionR")}
-                  type="number" min="0" max="250"
+                  type="number" min="0" max="150"
                   value={cohesionR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="cohesionRNum"
                 />
@@ -200,7 +221,7 @@ class Main extends React.Component {
                 <img src={cohesion_icon} alt="cohesion radius" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "cohesionR")} 
-                type="range" min="0" max="250" 
+                type="range" min="0" max="150" 
                 value={cohesionR} 
                 className="sliderDef" id="cohesionR"  
               />
@@ -209,7 +230,7 @@ class Main extends React.Component {
             <div className="boid-overlay-slider selector-text">
               <div className="boid-overlay-slider-presentation">
                 <input onChange={event => this.handleOverlaySlider(event, "separationR")}
-                  type="number" min="0" max="250"
+                  type="number" min="0" max="150"
                   value={separationR}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="separationRNum"
                 />
@@ -217,7 +238,7 @@ class Main extends React.Component {
                 <img src={separation_icon} alt="separation radius" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "separationR")}  
-                type="range" min="0" max="250" 
+                type="range" min="0" max="150" 
                 value={separationR}
                 className="sliderDef" id="separationR"
               />
@@ -337,8 +358,8 @@ class Main extends React.Component {
 
             <div className="boid-overlay-slider selector-text">
               <div className="boid-overlay-slider-presentation">
-                <input onChange={event => this.handleOverlayIcon(event, "size")}
-                  type="number" min="0" max="100" step="1"
+                <input onChange={event => this.handleOverlaySlider(event, "size")}
+                  type="number" min="0" max="1500" step="1"
                   value={size}
                   className="boid-overlay-text boid-overlay-slider-val boid-overlay-num" id="swarm-sizeNum"
                 />
@@ -346,7 +367,7 @@ class Main extends React.Component {
                 <img src={alignment_icon} alt = "swarm population size" />
               </div>
               <input onChange={event => this.handleOverlaySlider(event, "size")}
-                type="range" min="1" max="100" step="1"
+                type="range" min="1" max="1500" step="1"
                 value={size}
                 className="sliderDef" id="swarm-size"
               />

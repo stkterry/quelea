@@ -21,6 +21,7 @@ const CONFIG = () => {
     size: 0,
     boidIcon: null,
     boidIconSize: 10,
+    drawType: "default",
     minApproachAngle: Math.PI/2,
     alignmentFalloff: function (boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
@@ -122,13 +123,12 @@ class Swarm {
     }
   }
 
-  activeBoids() {
-    return this.boids.slice(0, this.size);
-  }
-
-  drawObstacles(ctx) {
-    for (let obs of this.obstacles) {
-      ctx.circle(obs.pos.x, obs.pos.y, 8, "#1AB5B9");
+  drawSwarmDensity(ctx) {
+    for (let boid of this.activeBoids()) {
+      let h = (boid.avgNeighbors / 50)*360 % 360
+      ctx.save();
+      ctx.circle(boid.pos.x, boid.pos.y, this.boidIconSize/2, `hsl(${h}, 50%, 50%)`);
+      ctx.restore();
     }
   }
 
@@ -149,5 +149,17 @@ class Swarm {
       ctx.restore();
     }
   }
+
+  activeBoids() {
+    return this.boids.slice(0, this.size);
+  }
+
+  drawObstacles(ctx) {
+    for (let obs of this.obstacles) {
+      ctx.circle(obs.pos.x, obs.pos.y, 8, "#1AB5B9");
+    }
+  }
+
+
 }
 export default Swarm;

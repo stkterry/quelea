@@ -52,6 +52,7 @@ class Main extends React.Component {
 
     this.handleOverlaySlider = this.handleOverlaySlider.bind(this);
     this.handleOverlayIcon = this.handleOverlayIcon.bind(this);
+    this.handleOverlayString = this.handleOverlayString.bind(this);
     this.showOverlayHighlight = this.showOverlayHighlight.bind(this);
     this.hideOverlayHighlight = this.hideOverlayHighlight.bind(this);
     this.showOverlay = this.showOverlay.bind(this);
@@ -91,7 +92,6 @@ class Main extends React.Component {
       let ele = document.getElementById("main-boids-anim");
 
       let { swarm } = this.state;
-      console.log(this.state.swarm)
       swarm.newObstacle(event.pageX - ele.offsetLeft, event.pageY - ele.offsetTop);
       this.setState({
         swarm: Object.assign(this.state.swarm, swarm)
@@ -115,6 +115,17 @@ class Main extends React.Component {
     });
   }
 
+  handleOverlayString(event, which) {
+    event.preventDefault();
+    this.setState({
+      swarm: Object.assign(
+        this.state.swarm,
+        { [which]: event.currentTarget.value }
+      )
+    })
+    console.log(which, event.currentTarget.value, this.state.swarm.drawType);
+  }
+
   handleOverlayIcon(event) {
     this.setState({
       swarm: Object.assign(
@@ -126,7 +137,6 @@ class Main extends React.Component {
 
   handleOverlaySlider(event, which) {
     event.preventDefault();
-    event.persist();
     this.setState({
       swarm: Object.assign(
         this.state.swarm,
@@ -478,6 +488,35 @@ class Main extends React.Component {
                 className="sliderDef" id="swarm-size"
               />
             </div>
+
+          </div>
+
+          <div className="boid-overlay-perception-sliders boid-avoidance-btns">
+
+            <button id="boid-drawtype-btns" className="boid-avoidance-btn"
+              value={"drawSwarmAdv"}
+              onClick={event => this.handleOverlayString(event, "drawType")}
+            >
+              <div
+                onMouseEnter={event => this.showOverlayHighlight(event, "info-boid-drawtype-boidicons")}
+                onMouseLeave={this.hideOverlayHighlight}
+              >
+                <h3>Boid Icons</h3>
+                <i className="fas fa-running" />
+              </div>
+            </button>
+            <button id="boid-drawtype-density" className="boid-avoidance-btn"
+              value={"drawSwarmDensity"}
+              onClick={event => this.handleOverlayString(event, "drawType")}
+            >
+              <div
+                onMouseEnter={event => this.showOverlayHighlight(event, "info-boid-drawtype-density")}
+                onMouseLeave={this.hideOverlayHighlight}
+              >
+                <h3>Density</h3>
+                <i className="fas fa-exclamation-triangle" />
+              </div>
+            </button>
 
           </div>
 

@@ -5,6 +5,7 @@ class Boid {
     this.pos = new Vec(pos.x, pos.y);
     this.vel = vel ? new Vec(vel.x, vel.y) : Vec.randFromMag(2, 3);
     this.acc = acc ? new Vec(acc.x, acc.y) : new Vec();
+    this.avgNeighbors = 0;
   }
 
   acsFunc(swarm, boids, obstacles) {
@@ -94,8 +95,9 @@ class Boid {
         .sub(this.vel)
         .limit(swarm.maxAvF)
     }
-
-    return new Boid(this.pos, this.vel, alignmentAvg.add(cohesionAvg).add(seperationAvg).add(avoidAvg))
+    let newBoid = new Boid(this.pos, this.vel, alignmentAvg.add(cohesionAvg).add(seperationAvg).add(avoidAvg));
+    newBoid.avgNeighbors = (alignmentAffectedBy + cohesionAffectedBy + separationAffectedBy) / 3;
+    return newBoid
   }
 
   update(swarm) {

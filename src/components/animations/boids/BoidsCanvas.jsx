@@ -23,7 +23,8 @@ class BoidsCanvas extends React.Component {
   draw() {
     this.ctx.fillStyle = "#051C24"
     this.ctx.fillRect(0, 0, this.width, this.height);
-    this.props.swarm.drawSwarmAdv(this.ctx, this.props.boids);
+    this.props.swarm.drawSwarmAdv(this.ctx);
+    this.props.swarm.drawObstacles(this.ctx);
   }
 
   render() {

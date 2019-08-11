@@ -95,6 +95,10 @@ class Vec {
     return new Vec(vec.x / norm, vec.y / norm);
   };
 
+  static scalarCross(vec1, vec2) {
+    return (vec1.x*vec2.y - vec1.y*vec2.x);
+  }
+
   static randFromMag(minMag, maxMag) {
     if (!maxMag) {
       maxMag = minMag;

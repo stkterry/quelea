@@ -184,7 +184,7 @@ class OverlayHighlight extends React.Component {
             <div className="boid-overlay-content">
               <div className="boid-overlay-perception-sliders">
                 <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
-                  Population
+                  Population Count
             </h3>
                 <p className="paragraph">
                   This adjusts the total maximum population.  Larger values
@@ -204,11 +204,55 @@ class OverlayHighlight extends React.Component {
             <div className="boid-overlay-content">
               <div className="boid-overlay-perception-sliders">
                 <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
-                  Population
+                  Population Icon Size
             </h3>
                 <p className="paragraph">
                   This is a cosmetic change, you can scale up each boid's icon
                   with this slider.  Go nuts, it has no performance impact.
+            </p>
+              </div>
+            </div>
+          </div>
+        )
+
+      case "info-avoidance-radius":
+        return (
+          <div id="info-maximum-acceleration" className="overlay-info-page">
+            <div className="boid-overlay-content">
+              <div className="boid-overlay-perception-sliders">
+                <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
+                  Avoidance Radius
+            </h3>
+                <p className="paragraph">
+                  By increasing or decreasing the radius, you can control
+                  the area around the obstacle that it will force avoidance
+                  behavior on nearby boids.
+                  <br></br>
+                  <br></br>
+                  A larger radius will mean boids begin trying to avoid the obstacle
+                  from farther away.  In general, a boid needs time to slow down
+                  and redirect itself away from an obstacle, so shorter radii 
+                  might have the boid smacking into it while too large a radius
+                  might have it seem as though the obstacle has an invisible barrier
+                  around it.
+            </p>
+              </div>
+            </div>
+          </div>
+        )
+
+      case "info-avoidance-max-force":
+        return (
+          <div id="info-maximum-acceleration" className="overlay-info-page">
+            <div className="boid-overlay-content">
+              <div className="boid-overlay-perception-sliders">
+                <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
+                  Avoidance Max Force
+            </h3>
+                <p className="paragraph">
+                  Increasing the avoidance force will have boids more immediately
+                  redirect around the obstacle as opposed to taking some amount
+                  of time to slow down and redirect.
             </p>
               </div>
             </div>

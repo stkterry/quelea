@@ -38,7 +38,9 @@ class OverlayInfo extends React.Component {
               emerge from the chaos and random choices they make collectively.
               <br></br>
               <br></br>
-              <h1>Alignment</h1>
+              </p>
+            <h2 className="section-heading">Alignment</h2>
+            <p className="paragraph">
               In alignment, each boid looks at its neighbors and sums the vectors 
               of each of their velocities, or direction and speed of travel.  From
               that the boid gets an average and multiplies it by some factor,
@@ -47,13 +49,17 @@ class OverlayInfo extends React.Component {
               slightly more inline with that of their neighbors.
               <br></br>
               <br></br>
-              <h1>Cohesion</h1>
+              </p>
+            <h1 className="section-heading">Cohesion</h1>
+            <p className="paragraph">
               In cohesion, a boid again considers their neighbors, but focuses
               on their average position, again adding up those vectors, multiplying
               by some factor, and then steering towards that center point.
               <br></br>
               <br></br>
-              <h1>Separation</h1>
+            </p>
+              <h1 className="section-heading">Separation</h1>
+            <p className="paragraph">
               Separation is sort of the opposite of cohesion.  Each boid might
               want to move towards the center of their group, but they also need
               some space.  So they consider their neighbors' positions relative to

@@ -53,6 +53,11 @@ class QuadTree {
     ) return true;
   }
 
+  sever() {
+    this.numPoints = 0;
+    this.divided = false;
+  }
+
   query(range, found = []) {
     if (!range.intersects(this.bounds)) return found;
       for (let i = 0; i < this.numPoints; i++) {

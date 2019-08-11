@@ -22,6 +22,7 @@ forces behind boids: **seperation**, **alignment**, and **cohesion**, as well th
 
 ### Purpose Built Libraries
 * Euclidian Geometry
-* 2D Vector objects
-* 2D Physics
+* Vectors
+* Boidian/Particle Motion
+* Physics
 * Quadtree Algorithm

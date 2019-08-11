@@ -40,7 +40,8 @@
   position: absolute;
   right: 0;
   width: 50%;
-  height: 100%;
+  // height: 100%;
+  max-height: 100%;
   // background: rgba(218, 117, 117, 0.397);
   box-sizing: border-box;
   padding: 40px 16px 16px 32px;
@@ -122,11 +123,37 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  // flex-direction: row;
-  // margin: 0 auto;
 
-  // &::after {
-  //   content: "";
-  //   flex: auto;
-  // }
+}
+
+
+// avoidance buttons
+.boid-avoidance-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.boid-avoidance-btn {
+  cursor: pointer;
+  font-size: 14px;
+  color: whitesmoke;
+  background: rgb(74, 78, 77);
+  border-radius: 8px;
+  padding: 4px;
+
+  div {
+    margin: 4px;
+  }
+  div * {
+    transition: all 150ms ease-out;
+  }
+  
+  div:hover * {
+  transition: all 150ms ease-in;
+  transform: scale(1.02, 1.02);
+  transform: translate(0, -4%);
+  filter: drop-shadow(0px 4px 4px rgb(52, 180, 169));
+  }
+  
+
 }

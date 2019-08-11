@@ -7,7 +7,7 @@ class Boid {
     this.acc = acc ? new Vec(acc.x, acc.y) : new Vec();
   }
 
-  acsFunc(swarm, boids) {
+  acsFunc(swarm, boids, obstacles) {
     let alignmentAvg = new Vec();
     let cohesionAvg = new Vec();
     let seperationAvg = new Vec();
@@ -17,12 +17,13 @@ class Boid {
     let alignmentAffectedBy = 0;
     let cohesionAffectedBy = 0;
     let separationAffectedBy = 0;
+    let avoidAffectedBy = 0;
 
     for (let boid of boids) {
       // alignment
       falloff = swarm.alignmentFalloff(this, boid);
       if (falloff > 0) {
-        alignmentAvg.add(Vec.scale(boid.vel, falloff));
+        alignmentAvg.add(boid.vel);
         alignmentAffectedBy += 1;
       }
 
@@ -37,15 +38,48 @@ class Boid {
       falloff = swarm.separationFalloff(this, boid);
       if (falloff > 0) {
         sepDiff = Vec.sub(this.pos, boid.pos);
-        seperationAvg.add(sepDiff.div(falloff));
+        seperationAvg.add(sepDiff.div(falloff*falloff));
         separationAffectedBy += 1;
       }
     }
 
+    // Avoidance
+    let avoidAvg = new Vec();
+    for (let obs of obstacles) {
+      falloff = swarm.avoidanceFalloff(this, obs);
+      if (falloff > 0) {
+
+        // get vec from boid to obs
+
+        sepDiff = Vec.sub(this.pos, obs.pos);
+        avoidAvg.add(sepDiff.div(falloff*falloff));
+        avoidAffectedBy += 1;
+      }
+    }
+
+    // let avoidAvg = new Vec();
+    // let rotVec;
+    // for (let obs of obstacles) {
+    //   falloff = swarm.avoidanceFalloff(this, obs);
+    //   if (falloff > 0) {
+
+    //     // get vec from boid to obs
+    //     sepDiff = Vec.sub(obs.pos, this.pos);
+    //     // rotate by 90 deg...
+    //     rotVec = new Vec(-sepDiff.x, sepDiff.y);
+
+    //     if (Math.sign(Vec.scalarCross(rotVec, this.vel)) !== Math.sign(this.vel, sepDiff)) {
+    //       rotVec = new Vec(sepDiff.x, -sepDiff.y);
+    //     }
+    //     avoidAvg.add(rotVec.div(falloff * falloff))
+    //     avoidAffectedBy += 1;
+    //   }
+    // }
+
     // alignment
     if (alignmentAffectedBy > 0) {
       alignmentAvg
-        .div(alignmentAffectedBy)
+        // .div(alignmentAffectedBy)
         .setMag(swarm.maxSpeed)
         .sub(this.vel)
         .limit(swarm.maxAF)
@@ -64,13 +98,22 @@ class Boid {
     // separation
     if (separationAffectedBy > 0) {
       seperationAvg
-        .div(separationAffectedBy)
+        // .div(separationAffectedBy)
         .setMag(swarm.maxSpeed)
         .sub(this.vel)
         .limit(swarm.maxSF);
     }
 
-    return new Boid(this.pos, this.vel, alignmentAvg.add(cohesionAvg).add(seperationAvg))
+    // Avoidance
+    if (avoidAffectedBy > 0) {
+      avoidAvg
+        .div(avoidAffectedBy)
+        .setMag(swarm.maxSpeed)
+        .sub(this.vel)
+        .limit(swarm.maxAvF)
+    }
+
+    return new Boid(this.pos, this.vel, alignmentAvg.add(cohesionAvg).add(seperationAvg).add(avoidAvg))
   }
 
   update(swarm) {

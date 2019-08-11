@@ -178,6 +178,55 @@ class OverlayHighlight extends React.Component {
           </div>
         )
 
+      case "info-boid-drawtype-boidicons":
+        return (
+          <div id="info-boid-drawtype-boidicons" className="overlay-info-page">
+            <div className="boid-overlay-content">
+              <div className="boid-overlay-perception-sliders">
+                <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
+                  DrawType: Boid Icons
+            </h3>
+                <p className="paragraph">
+                  This is the default drawtype for the boids, the icons below
+                  will be drawn to the screen at the given size set in the 'Physical Size'
+                  section above.
+            </p>
+              </div>
+            </div>
+          </div>
+        )
+
+      case "info-boid-drawtype-density":
+        return (
+          <div id="info-boid-drawtype-boidicons" className="overlay-info-page">
+            <div className="boid-overlay-content">
+              <div className="boid-overlay-perception-sliders">
+                <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
+                  WARNING!: Experimental
+                  <br></br>
+                  <br></br>
+                  SEIZURE-WARNING!: Flashing, undulating colors
+                  <br></br>
+                  
+            </h3>
+              </div>
+              <div className="boid-overlay-perception-sliders">
+                <h3 className="boid-overlay-slider-heading-text boid-overlay-text">
+                  DrawType: Density
+            </h3>
+                <p className="paragraph">
+                  This is a wonderful though experimental drawtype that displays
+                  a boid's color as the density of its neighbors.  The density is
+                  taken from the average number of neighbors within all three
+                  perception radii.
+                  <br></br>
+                  NOTE: When enabled the "Boid Icons" section will be unavailable
+            </p>
+              </div>
+            </div>
+          </div>
+        )
+
       case "info-population-size":
         return (
           <div id="info-maximum-acceleration" className="overlay-info-page">
@@ -214,6 +263,8 @@ class OverlayHighlight extends React.Component {
             </div>
           </div>
         )
+
+
 
       case "info-avoidance-radius":
         return (
@@ -258,6 +309,8 @@ class OverlayHighlight extends React.Component {
             </div>
           </div>
         )
+
+
 
       default:
         return <></>

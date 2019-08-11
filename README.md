@@ -14,7 +14,7 @@ Users can add/remove boids and obstacles, set sliders for the simulation variabl
   <img src="./readme_imgs/two.png" alt="obstacle-showcase" width="32.5%">
   <img src="./readme_imgs/three.png" alt="cosmetics-showcase" width="32.5%">
   <img src="./readme_imgs/five.png" alt="tooltip-showcase" width="32.5%">
-  <img src="./readme_imgs/six.png" alt="max_pop-showcase" width="32.5%">
+  <img src="./readme_imgs/eight.png" alt="experimental-density-showcase" width="32.5%">
 </div>
 
 ## Intention

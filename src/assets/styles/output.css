@@ -450,6 +450,9 @@ body {
     transform: translate(0, -4%);
     filter: drop-shadow(0px 4px 4px #34b4a9); }
 
+#boid-drawtype-density div i {
+  color: #dd9716; }
+
 .overlay-info-about {
   display: flex;
   flex-direction: column;

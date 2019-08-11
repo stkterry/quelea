@@ -4,7 +4,7 @@
   "description": "A visualization of boids, a swarm-like algorithm",
   "respository": {
     "type": "git",
-    "url": "git+https://github.com/stkterry/boids.git"
+    "url": "git+https://github.com/stkterry/quelea.git"
   },
   "keywords": [
     "boids",
@@ -19,9 +19,9 @@
   "author": "stkterry",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/stkterry/boids/issues"
+    "url": "https://github.com/stkterry/quelea/issues"
   },
-  "homepage": "https://github.com/stkterry/boids#readme",
+  "homepage": "https://github.com/stkterry/quelea#readme",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",

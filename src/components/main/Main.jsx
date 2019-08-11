@@ -620,6 +620,10 @@ class Main extends React.Component {
           <h3 className="main-about-me">
             stkterry@gmail.com
           </h3>
+        <div id="credits">
+          <h3>Select Icons made by <a href="http://www.flaticon.com/authors/freepik">Freepik</a></h3>
+          <h3>Quelea logo created by <a href="http://alexeyivanov.com/">Alexy Ivanov</a></h3>
+        </div>
         </div>
       </div>
     )

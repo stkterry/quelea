@@ -127,7 +127,7 @@ class Swarm {
 
   drawObstacles(ctx) {
     for (let obs of this.obstacles) {
-      ctx.circle(obs.pos.x, obs.pos.y, 8, "yellow");
+      ctx.circle(obs.pos.x, obs.pos.y, 8, "#1AB5B9");
     }
   }
 

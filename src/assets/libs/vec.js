@@ -70,6 +70,16 @@ class Vec {
     return this;
   }
 
+  rot90() {
+    this.x = -this.x;
+    return this;
+  }
+
+  rotN90() {
+    this.y = -this.y;
+    return this;
+  }
+
   newUnit() {
     const norm = this.getNorm();
     return new Vec(this.x / norm, this.y / norm);
@@ -97,6 +107,12 @@ class Vec {
 
   static scalarCross(vec1, vec2) {
     return (vec1.x*vec2.y - vec1.y*vec2.x);
+  }
+
+  static angleBetween(vec1, vec2) {
+    return Math.acos(
+      Vec.scalarCross(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
+    )
   }
 
   static randFromMag(minMag, maxMag) {

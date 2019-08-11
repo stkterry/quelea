@@ -38,7 +38,7 @@ class Boid {
       falloff = swarm.separationFalloff(this, boid);
       if (falloff > 0) {
         sepDiff = Vec.sub(this.pos, boid.pos);
-        seperationAvg.add(sepDiff.div(falloff*falloff));
+        seperationAvg.add(sepDiff.div(falloff * falloff));
         separationAffectedBy += 1;
       }
     }
@@ -49,32 +49,14 @@ class Boid {
       falloff = swarm.avoidanceFalloff(this, obs);
       if (falloff > 0) {
 
-        // get vec from boid to obs
-
         sepDiff = Vec.sub(this.pos, obs.pos);
-        avoidAvg.add(sepDiff.div(falloff*falloff));
-        avoidAffectedBy += 1;
+        if (Vec.angleBetween(this.vel, sepDiff) <= swarm.minApproachAngle ) {
+          avoidAvg.add(sepDiff.div(falloff*falloff));
+          avoidAffectedBy += 1;
+        }
       }
     }
 
-    // let avoidAvg = new Vec();
-    // let rotVec;
-    // for (let obs of obstacles) {
-    //   falloff = swarm.avoidanceFalloff(this, obs);
-    //   if (falloff > 0) {
-
-    //     // get vec from boid to obs
-    //     sepDiff = Vec.sub(obs.pos, this.pos);
-    //     // rotate by 90 deg...
-    //     rotVec = new Vec(-sepDiff.x, sepDiff.y);
-
-    //     if (Math.sign(Vec.scalarCross(rotVec, this.vel)) !== Math.sign(this.vel, sepDiff)) {
-    //       rotVec = new Vec(sepDiff.x, -sepDiff.y);
-    //     }
-    //     avoidAvg.add(rotVec.div(falloff * falloff))
-    //     avoidAffectedBy += 1;
-    //   }
-    // }
 
     // alignment
     if (alignmentAffectedBy > 0) {

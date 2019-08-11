@@ -8,19 +8,20 @@ import Obstacle from "./obstacle";
 
 const CONFIG = () => {
   return {
-    alignmentR: 50,
+    alignmentR: 25,
     cohesionR: 50,
-    separationR: 50,
+    separationR: 24,
     avoidanceR: 50,
-    maxAF: 0.2,
+    maxAF: 0.3,
     maxCF: 0.2,
-    maxSF: 0.2,
-    maxAvF: 0.3,
+    maxSF: 0.4,
+    maxAvF: 0.75,
     maxSpeed: 3,
     maxAcc: 0.1,
     size: 0,
     boidIcon: null,
     boidIconSize: 10,
+    minApproachAngle: Math.PI/2,
     alignmentFalloff: function (boid, otherBoid) {
       const dist = boid.pos.distTo(otherBoid.pos);
       if (dist < this.alignmentR && dist > 0) return 1;

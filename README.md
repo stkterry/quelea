@@ -1,12 +1,20 @@
 # Quelea | A Boids Simulation
 ![Quelea Banner](./readme_imgs/banner.png)
-<p align="center"><img src="./readme_imgs/c2.png" alt="Base" width="400"></p>
+<p align="center"><img src="./readme_imgs/six.png" alt="Base" width="400"></p>
 
 ## Overview
 A simulation of boidian behavior exhibited by flocking, swarming, herding, swimming, or flying animals
 
 ## Features
-Users will be able to add/remove boids and obstacles, set sliders for the simulation variables, show/hide underlying structures and rules that guide the boids, and step through a boid's behavior.
+Users can add/remove boids and obstacles, set sliders for the simulation variables, show/hide underlying structures and rules that guide the boids, and step through a boid's behavior.
+<div display="flex" flex-direction="row">
+  <img src="./readme_imgs/four.png" alt="about-showcase" width="32.5%">
+  <img src="./readme_imgs/one.png" alt="slider-showcase" width="32.5%">
+  <img src="./readme_imgs/two.png" alt="obstacle-showcase" width="32.5%">
+  <img src="./readme_imgs/three.png" alt="cosmetics-showcase" width="32.5%">
+  <img src="./readme_imgs/five.png" alt="tooltip-showcase" width="32.5%">
+  <img src="./readme_imgs/six.png" alt="max_pop-showcase" width="32.5%">
+</div>
 
 ## Intention
 Flocking behavior is often poorly understood but nevertheless an interesting and valuable simulation, having uses in swarm automation and AI, other more complex data visualizations, Biology, computer graphics, video game development, etc.  A basic visual guide with references to each of the steps can be invaluable in reproducing the effect in any number of projects.

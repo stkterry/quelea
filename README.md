@@ -35,3 +35,23 @@ forces behind boids: **seperation**, **alignment**, and **cohesion**, as well th
 * Boidian/Particle Motion
 * Physics
 * Quadtree Algorithm
+
+## Features, Implementation, Snippets
+Excluding React, all features and code take full advantage of vanilla JavaScript
+and the HTML5 Canvas.  All additionally libraries were purpose built for the demonstration.
+
+### Vectors
+The vector library is a simplified 2D vector class.  Most none-static methods
+can be chained to together to perform sequences of operations while saving code space.
+
+```js
+
+import Vec from 
+
+```
+
+## To-do
+* Add Falloff page - User controls that allow selecting different falloff curves
+  for the various perception radii within the app
+* Add the ability to select different backgrounds and display styles
+* Add canvas resizing (currently fixed width/height)

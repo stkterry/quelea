@@ -4,7 +4,7 @@ import * as serviceWorker from './serviceWorker';
 
 import Root from "./components/root";
 import "./assets/styles/output.css";
-require("./assets/libs/canvas_helpers");
+require("./libs/canvas_helpers");
 
 const root = document.getElementById("root");
 ReactDOM.render(<Root />, root);

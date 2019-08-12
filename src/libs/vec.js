@@ -14,8 +14,6 @@ class Vec {
 
   copy() { return new Vec(this.x, this.y) };
 
-  get() { return {x: this.x, y: this.y } };
-
   getHeading() {
     return atan2(this.y, this.x);
   }
@@ -67,16 +65,6 @@ class Vec {
   setMag(mag) {
     this.normalize();
     this.scale(mag);
-    return this;
-  }
-
-  rot90() {
-    this.x = -this.x;
-    return this;
-  }
-
-  rotN90() {
-    this.y = -this.y;
     return this;
   }
 

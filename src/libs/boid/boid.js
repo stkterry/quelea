@@ -1,4 +1,4 @@
-import Vec from "./vec";
+import Vec from "../vec";
 
 class Boid {
   constructor(pos, vel, acc) {

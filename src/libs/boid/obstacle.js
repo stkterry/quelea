@@ -1,5 +1,5 @@
 
-import Vec from "./vec";
+import Vec from "../vec";
 
 class Obstacle {
   constructor(x, y) {

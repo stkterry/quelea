@@ -1,8 +1,8 @@
-import { Rand } from "./util";
+import { Rand } from "../util";
 import Boid from "./boid";
 
-import QuadTree from "./quadtree/quadtree";
-import Rect from "./quadtree/quad_rect";
+import QuadTree from "../quadtree/quadtree";
+import Rect from "../quadtree/quad_rect";
 import Obstacle from "./obstacle";
 
 const CONFIG = () => {

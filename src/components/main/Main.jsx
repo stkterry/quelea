@@ -4,7 +4,7 @@ import BoidsAnim from "../animations/boids/BoidsAnim";
 import OverlayInfo from "./overlay_info";
 import OverlayHighlight from "./overlay_highlight";
 
-import Swarm from "../../assets/libs/swarm";
+import Swarm from "../../libs/boid/swarm";
 
 import alignment_icon from "../../assets/public/images/alignment.svg";
 import cohesion_icon from "../../assets/public/images/cohesion.svg";

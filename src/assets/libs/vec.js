@@ -111,7 +111,7 @@ class Vec {
 
   static angleBetween(vec1, vec2) {
     return acos(
-      Vec.scalarCross(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
+      Vec.scalar(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
     )
   }
 

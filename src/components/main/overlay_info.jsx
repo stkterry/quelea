@@ -19,7 +19,7 @@ class OverlayInfo extends React.Component {
               graphical visualization of the swarm effect!
               <br></br>
               <br></br>
-              This site was named after a bird famous for it's flocking behaviors,
+              This site was named after a bird famous for its flocking behaviors,
               the Quelea, and you should read more about them <a className="text-raise" href="https://en.wikipedia.org/wiki/Quelea">here</a> as well as the
               original developer of the boid algorithm, <a className="text-raise" href="http://www.red3d.com/cwr/">Craig Reynolds</a>.
             </p>

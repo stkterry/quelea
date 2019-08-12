@@ -9,13 +9,13 @@ class QRect {
     this.h = h;
   }
 
-  // Is some point within the QRect?
-  contains (point) {
+  // Is some object within the QRect?
+  contains (object) {
     return (
-      point.x >= this.x - this.w &&
-      point.x <= this.x + this.w &&
-      point.y >= this.y - this.h &&
-      point.y <= this.y + this.h
+      object.pos.x >= this.x - this.w &&
+      object.pos.x <= this.x + this.w &&
+      object.pos.y >= this.y - this.h &&
+      object.pos.y <= this.y + this.h
     )
   }
 

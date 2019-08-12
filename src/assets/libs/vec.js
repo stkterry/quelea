@@ -1,5 +1,5 @@
 const TWO_PI = Math.PI * 2;
-const { atan2, sqrt, cos, sin, random } = Math;
+const { atan2, sqrt, cos, sin, random, acos, pow } = Math;
 
 class Vec {
   constructor(x = 0, y = 0) {
@@ -25,7 +25,7 @@ class Vec {
   }
 
   distTo(otherVec) {
-    return sqrt( (this.x - otherVec.x)**2 + (this.y - otherVec.y)**2 );
+    return sqrt( pow(this.x - otherVec.x, 2) + pow(this.y - otherVec.y, 2) );
   }
 
   normalize() {
@@ -105,12 +105,12 @@ class Vec {
     return new Vec(vec.x / norm, vec.y / norm);
   };
 
-  static scalarCross(vec1, vec2) {
+  static scalar(vec1, vec2) {
     return (vec1.x*vec2.y - vec1.y*vec2.x);
   }
 
   static angleBetween(vec1, vec2) {
-    return Math.acos(
+    return acos(
       Vec.scalarCross(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
     )
   }
@@ -127,14 +127,6 @@ class Vec {
 
     return new Vec(x, y);
   };
-
-  static randFromDim(xmin = 0, ymin = 0, xmax, ymax) {
-    const x = (xmax - xmin) * random() + xmin;
-    const y = (ymax = ymin) * random() + ymin;
-    return new Vec(x, y);
-  };
-
-
 
 }
 

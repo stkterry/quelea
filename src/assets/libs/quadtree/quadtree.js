@@ -4,7 +4,7 @@ class QuadTree {
   constructor(bounds, n) {
     this.bounds = bounds;
     this.cap = n;
-    this.points = new Array(n);
+    this.objects = new Array(n);
     this.numPoints = 0;
     this.divided = false;
   }
@@ -33,11 +33,11 @@ class QuadTree {
     this.divided = true;
   }
 
-  insert(point) {
-    if (!this.bounds.contains(point)) return false;
+  insert(object) {
+    if (!this.bounds.contains(object)) return false;
 
     if (this.numPoints < this.cap) {
-      this.points[this.numPoints] = point;
+      this.objects[this.numPoints] = object;
       this.numPoints++;
       return true;
     }
@@ -46,10 +46,10 @@ class QuadTree {
     }
 
     if (
-      this.ne.insert(point) ||
-      this.se.insert(point) ||
-      this.sw.insert(point) ||
-      this.nw.insert(point)
+      this.ne.insert(object) ||
+      this.se.insert(object) ||
+      this.sw.insert(object) ||
+      this.nw.insert(object)
     ) return true;
   }
 
@@ -61,7 +61,7 @@ class QuadTree {
   query(range, found = []) {
     if (!range.intersects(this.bounds)) return found;
       for (let i = 0; i < this.numPoints; i++) {
-        if (range.contains(this.points[i])) found.push(this.points[i].dat);
+        if (range.contains(this.objects[i])) found.push(this.objects[i]);
       }
 
       if (this.divided) {

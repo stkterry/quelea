@@ -20,7 +20,7 @@ const CONFIG = () => {
     size: 0,
     boidIcon: null,
     boidIconSize: 10,
-    drawType: "default",
+    drawType: "drawSwarm",
     minApproachAngle: 3*Math.PI/5,
     alignmentFalloff: function (dist) {
       if (dist < this.alignmentR && dist > 0) return 1;

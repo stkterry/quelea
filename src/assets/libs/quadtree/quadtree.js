@@ -13,19 +13,19 @@ class QuadTree {
     let { x, y, w, h } = this.bounds;
     w = w/2;
     h = h/2;
-    this.ne = new QuadTree(
+    this.q1 = new QuadTree(
       new Rect(x + w, y - h, w, h ),
       this.cap
     );
-    this.se = new QuadTree(
+    this.q4 = new QuadTree(
       new Rect(x + w, y + h, w, h),
       this.cap 
     );
-    this.sw = new QuadTree(
+    this.q3 = new QuadTree(
       new Rect(x - w, y + h, w, h),
       this.cap
     );
-    this.nw = new QuadTree(
+    this.q2 = new QuadTree(
       new Rect(x - w, y - h, w, h),
       this.cap
     );
@@ -46,10 +46,10 @@ class QuadTree {
     }
 
     if (
-      this.ne.insert(object) ||
-      this.se.insert(object) ||
-      this.sw.insert(object) ||
-      this.nw.insert(object)
+      this.q1.insert(object) ||
+      this.q4.insert(object) ||
+      this.q3.insert(object) ||
+      this.q2.insert(object)
     ) return true;
   }
 
@@ -59,16 +59,16 @@ class QuadTree {
   }
 
   query(range, found = []) {
-    if (!range.intersects(this.bounds)) return found;
+    if (!range.intersects(this.bounds)) return found
       for (let i = 0; i < this.numPoints; i++) {
         if (range.contains(this.objects[i])) found.push(this.objects[i]);
       }
 
       if (this.divided) {
-        this.ne.query(range, found);
-        this.se.query(range, found);
-        this.sw.query(range, found);
-        this.nw.query(range, found);
+        this.q1.query(range, found);
+        this.q4.query(range, found);
+        this.q3.query(range, found);
+        this.q2.query(range, found);
       }
       return found; 
   }

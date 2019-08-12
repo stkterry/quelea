@@ -16,24 +16,21 @@ const CONFIG = () => {
     maxSF: 0.4,
     maxAvF: 0.75,
     maxSpeed: 3,
-    maxAcc: 0.1,
+    maxAcc: 1,
     size: 0,
     boidIcon: null,
     boidIconSize: 10,
     drawType: "default",
-    minApproachAngle: Math.PI/2,
-    alignmentFalloff: function (boid, otherBoid) {
-      const dist = boid.pos.distTo(otherBoid.pos);
+    minApproachAngle: 3*Math.PI/5,
+    alignmentFalloff: function (dist) {
       if (dist < this.alignmentR && dist > 0) return 1;
       else return 0;
     },
-    cohesionFalloff: function (boid, otherBoid) {
-      const dist = boid.pos.distTo(otherBoid.pos);
+    cohesionFalloff: function (dist) {
       if (dist < this.cohesionR && dist > 0) return 1;
       else return 0;
     },
-    separationFalloff: function (boid, otherBoid) {
-      const dist = boid.pos.distTo(otherBoid.pos);
+    separationFalloff: function (dist) {
       if (dist < this.separationR && dist > 0) return dist;
       else return 0;
     },
@@ -123,7 +120,7 @@ class Swarm {
   }
 
   drawSwarmDensity(ctx) {
-    let maxR = Math.max(this.alignmentR, this.cohesionR, this.separationR)
+    // let maxR = Math.max(this.alignmentR, this.cohesionR, this.separationR)
     // let maxR = (this.alignmentR + this.cohesionR + this.separationR) / 3
     for (let boid of this.activeBoids()) {
       let h = (boid.avgNeighbors / 50)*360

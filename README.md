@@ -44,7 +44,7 @@ over the name of each option will reveal them.
 
 ## Features, Implementation, Snippets
 Excluding React, all features and code take full advantage of vanilla JavaScript
-and the HTML5 Canvas.  All additionally libraries were purpose built for the demonstration.
+and the HTML5 Canvas.  All additional libraries were purpose built for the demonstration.
 
 ### Vectors
 The vector library is a simplified 2D vector class.  Most none-static methods

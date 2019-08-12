@@ -3,7 +3,6 @@ import Boid from "./boid";
 
 import QuadTree from "./quadtree/quadtree";
 import Rect from "./quadtree/quad_rect";
-import Point from "./quadtree/quad_point";
 import Obstacle from "./obstacle";
 
 const CONFIG = () => {
@@ -67,13 +66,13 @@ class Swarm {
   newObstacle(x, y) {
     const obstacle = new Obstacle(x, y)
     this.obstacles.push(obstacle)
-    this.obsQT.insert(new Point(obstacle.pos.x, obstacle.pos.y, obstacle));
+    this.obsQT.insert(obstacle);
   }
   deleteLastObstacle() {
     this.obsQT.sever();
     this.obstacles.pop();
     for (let obs of this.obstacles) {
-      this.obsQT.insert(new Point(obs.pos.x, obs.pos.y, obs));
+      this.obsQT.insert(obs);
     }
   }
   deleteAllObstacles() {
@@ -86,9 +85,9 @@ class Swarm {
 
     const max = Math.max(this.alignmentR, this.cohesionR, this.separationR);
     const field = new Rect(width / 2, height / 2, width / 2, height / 2);
-    let boidsQT = new QuadTree(field, 4);
+    let boidsQT = new QuadTree(field, 8);
     for (let boid of this.activeBoids()) {
-      boidsQT.insert(new Point(boid.pos.x, boid.pos.y, boid))
+      boidsQT.insert(boid)
     }
 
     for (let i = 0, len = this.size; i < len; i++) {
@@ -124,8 +123,10 @@ class Swarm {
   }
 
   drawSwarmDensity(ctx) {
+    let maxR = Math.max(this.alignmentR, this.cohesionR, this.separationR)
+    // let maxR = (this.alignmentR + this.cohesionR + this.separationR) / 3
     for (let boid of this.activeBoids()) {
-      let h = (boid.avgNeighbors / 50)*360 % 360
+      let h = (boid.avgNeighbors / 50)*360
       ctx.save();
       ctx.circle(boid.pos.x, boid.pos.y, this.boidIconSize/2, `hsl(${h}, 50%, 50%)`);
       ctx.restore();

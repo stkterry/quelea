@@ -48,7 +48,7 @@ and the HTML5 Canvas.  All additional libraries were purpose built for the demon
 
 ### Vectors
 The vector library is a simplified 2D vector class.  Most none-static methods
-can be chained to together to perform sequences of operations while saving code space.
+can be chained together to perform sequences of operations while saving code space.
 This code could be greatly expanded upon should the need arise to include 3 or more dimensions,
 cross-products, matrix solutions, or other useful vector products.
 ```js

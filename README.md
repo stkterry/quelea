@@ -36,7 +36,7 @@ over the name of each option will reveal them.
 * HTML5 Canvas
 
 ### Purpose Built Libraries
-* Euclidian Geometry
+* Euclidean Geometry
 * Vectors
 * Boidian/Particle Motion
 * Physics

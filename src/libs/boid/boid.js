@@ -21,27 +21,27 @@ class Boid {
     let avoidAffectedBy = 0;
 
     let dist;
-    for (let boid of boids) {
+    for (let i = 0, k = boids.length; i < k; i++) {
       // alignment
-      dist = boid.pos.distTo(this.pos);
+      dist = boids[i].pos.distTo(this.pos);
 
       falloff = swarm.alignmentFalloff(dist);
       if (falloff > 0) {
-        alignmentAvg.add(boid.vel);
+        alignmentAvg.add(boids[i].vel);
         alignmentAffectedBy += 1;
       }
 
       // cohesion
       falloff = swarm.cohesionFalloff(dist);
       if (falloff > 0) {
-        cohesionAvg.add(Vec.scale(boid.pos, falloff));
+        cohesionAvg.add(Vec.scale(boids[i].pos, falloff));
         cohesionAffectedBy += 1;
       }
 
       // separation
       falloff = swarm.separationFalloff(dist);
       if (falloff > 0) {
-        sepDiff = Vec.sub(this.pos, boid.pos);
+        sepDiff = Vec.sub(this.pos, boids[i].pos);
         seperationAvg.add(sepDiff.div(falloff * falloff));
         separationAffectedBy += 1;
       }

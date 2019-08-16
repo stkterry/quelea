@@ -3,7 +3,7 @@ import React from 'react';
 import Nav from "./nav/Nav";
 import Main from "./main/Main";
 
-// import "../assets/libs/quadtree/test";
+// import "../libs/quadtree/test";
 
 const pointer = require("../assets/public/images/pointer-white.png");
 const rawFish = require("../assets/public/images/raw-fish.png");

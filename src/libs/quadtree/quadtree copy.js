@@ -59,7 +59,7 @@ class QuadTree {
   }
 
   query(range, found = []) {
-    if (range.intersects(this.bounds)) {
+    if (!range.intersects(this.bounds)) return found
       for (let i = 0; i < this.numPoints; i++) {
         if (range.contains(this.objects[i])) found.push(this.objects[i]);
       }
@@ -70,9 +70,9 @@ class QuadTree {
         this.q3.query(range, found);
         this.q2.query(range, found);
       }
-    }
-    return found; 
+      return found; 
   }
+
 
 }
 export default QuadTree;

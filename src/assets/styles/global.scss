@@ -202,4 +202,9 @@ body {
     color: rgb(73, 67, 95);
     text-decoration: none;
   }
+
+  summary {
+    outline: none;
+    margin-bottom: 4px;
+  }
 }

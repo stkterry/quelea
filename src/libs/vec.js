@@ -1,5 +1,5 @@
 const TWO_PI = Math.PI * 2;
-const { atan2, sqrt, cos, sin, random, acos, pow, asin } = Math;
+const { atan2, sqrt, cos, sin, random, acos, pow } = Math;
 
 class Vec {
   constructor(x = 0, y = 0) {

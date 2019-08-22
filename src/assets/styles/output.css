@@ -228,6 +228,9 @@ body {
   #credits a {
     color: #49435f;
     text-decoration: none; }
+  #credits summary {
+    outline: none;
+    margin-bottom: 4px; }
 
 #main {
   margin-top: 64px;
@@ -463,8 +466,21 @@ body {
   box-sizing: border-box;
   padding: 40px 16px 16px 16px; }
 
+@keyframes pulse {
+  from {
+    color: rgba(196, 195, 195, 0.623); }
+  50% {
+    color: white; }
+  100% {
+    color: rgba(196, 195, 195, 0.623); } }
 #info-overlay-about {
   margin-right: auto; }
+  #info-overlay-about i {
+    animation-name: pulse;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.664); }
 
 .overlay-info-page {
   display: flex;

@@ -11,8 +11,21 @@
   padding: 40px 16px 16px 16px;
 }
 
+@keyframes pulse {
+  from {color: rgba(196, 195, 195, 0.623)}
+  50% {color: rgb(255, 255, 255)}
+  100% {color: rgba(196, 195, 195, 0.623)}
+}
+
 #info-overlay-about {
   margin-right: auto;
+  i {
+    animation-name: pulse;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.664);
+  }
 }
 
 .overlay-info-page {

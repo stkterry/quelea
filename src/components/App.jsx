@@ -1,9 +1,11 @@
 import React from 'react';
-// import BoidsAnim from "./animations/boids/BoidsAnim";
 import Nav from "./nav/Nav";
 import Main from "./main/Main";
 
-// import "../libs/quadtree/test";
+const http = require("http");
+setInterval(function () {
+  http.get("http://https://quelea-boids.herokuapp.com/");
+}, 300000); // every 5 minutes (300000)
 
 const pointer = require("../assets/public/images/pointer-white.png");
 const rawFish = require("../assets/public/images/raw-fish.png");

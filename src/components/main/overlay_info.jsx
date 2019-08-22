@@ -116,7 +116,7 @@ class OverlayInfo extends React.Component {
               <br></br>
               <br></br>
               You can guess that there's a Boid class but there's also a Swarm class.
-              While the boid houses all of it's own functionality necessary for movement,
+              While the boid houses all of its own functionality necessary for movement,
               the Swarm keeps track of and updates the boids as a collection, as well
               as houses configuration data that can be manipulated through React's state.
               It makes possible all those lovely sliders and instant updates to the sim.

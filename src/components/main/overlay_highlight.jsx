@@ -169,7 +169,7 @@ class OverlayHighlight extends React.Component {
                 <p className="paragraph">
                   This is a control for the overall level of effect for any of the
                   behavioral acceleration forces.  Its effect is somewhat subtle, actually,
-                  but you can see it amongst individual boids as the interact with
+                  but you can see it amongst individual boids as they interact with
                   each other, resulting in more fluid, spongy motion when decreased, or by increasing it,
                   almost like the boids are hitting invisible force fields as they collide.
             </p>

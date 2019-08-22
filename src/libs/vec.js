@@ -1,5 +1,5 @@
 const TWO_PI = Math.PI * 2;
-const { atan2, sqrt, cos, sin, random, acos, pow } = Math;
+const { atan2, sqrt, cos, sin, random, acos, pow, asin } = Math;
 
 class Vec {
   constructor(x = 0, y = 0) {
@@ -93,13 +93,17 @@ class Vec {
     return new Vec(vec.x / norm, vec.y / norm);
   };
 
-  static scalar(vec1, vec2) {
+  static cross(vec1, vec2) {
     return (vec1.x*vec2.y - vec1.y*vec2.x);
   }
 
-  static angleBetween(vec1, vec2) {
+  static dot (vec1, vec2) {
+    return (vec1.x * vec2.x + vec1.y * vec2.y)
+  }
+
+  static angleBetween2(vec1, vec2) {
     return acos(
-      Vec.scalar(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
+      Vec.dot(vec1, vec2) / (vec1.getNorm() * vec2.getNorm())
     )
   }
 

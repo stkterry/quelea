@@ -52,9 +52,8 @@ class Boid {
     for (let obs of obstacles) {
       falloff = swarm.avoidanceFalloff(this, obs);
       if (falloff > 0) {
-
         sepDiff = Vec.sub(this.pos, obs.pos);
-        if (Vec.angleBetween(this.vel, sepDiff) <= swarm.minApproachAngle) {
+        if (Vec.angleBetween2(this.vel, sepDiff) <= swarm.minApproachAngle) {
           avoidAvg.add(sepDiff.div(falloff * falloff));
           avoidAffectedBy += 1;
         }

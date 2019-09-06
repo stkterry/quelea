@@ -94,7 +94,7 @@ class Main extends React.Component {
       let { swarm } = this.state;
       swarm.newObstacle(event.pageX - ele.offsetLeft, event.pageY - ele.offsetTop);
       this.setState({
-        swarm: Object.assign(this.state.swarm, swarm)
+        swarm: swarm
       });
     }
   }
@@ -103,7 +103,7 @@ class Main extends React.Component {
     let { swarm } = this.state;
     swarm.deleteLastObstacle();
     this.setState({
-      swarm: Object.assign(this.state.swarm, swarm)
+      swarm: swarm
     })
   }
   removeAllObstacles(event) {
@@ -648,6 +648,7 @@ class Main extends React.Component {
           <OverlayHighlight infoSelection={this.state.showOverlayHighlight} />
 
           <div className="main-edge-container">
+            <h1>Start Here</h1>
             <div className="main-cover"></div>
             <BoidsAnim swarm={this.state.swarm} />
           </div>

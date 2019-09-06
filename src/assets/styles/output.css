@@ -250,6 +250,11 @@ body {
   z-index: -1;
   height: 100%;
   width: 100%; }
+  .main-edge-container h1 {
+    color: rgba(255, 255, 255, 0.829);
+    position: absolute;
+    left: 65px;
+    top: 12.5px; }
 
 .main-cover {
   position: absolute;

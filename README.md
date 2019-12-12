@@ -1,5 +1,5 @@
 # Quelea | A Boids Simulation
-[Live Link](https://quelea-boids.herokuapp.com/#/)
+[Live Link](https://quelea-boid.herokuapp.com/#/)
 ![Quelea Banner](./readme_imgs/banner.png)
 <p align="center"><img src="./readme_imgs/six.png" alt="Base" width="400"></p>
 

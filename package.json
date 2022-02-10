@@ -62,7 +62,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "concurrently": "^4.1.1",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   },
   "engines": {
     "node": "10.13.0"
